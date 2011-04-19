@@ -1,0 +1,14 @@
+install-selenium
+
+From: Bryan Larsen <bryan@larsen.st>
+
+# Integration Testing
+
+It's not a real application without tests.  We're going to use [Selenium](http://seleniumhq.org/) to do some integration testing.
+
+We've forked selenium-on-rails to add a couple of helper functions.  Install our fork using
+
+    $ git submodule add git://github.com/bryanlarsen/selenium-on-rails.git vendor/plugins/selenium-on-rails
+---
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+

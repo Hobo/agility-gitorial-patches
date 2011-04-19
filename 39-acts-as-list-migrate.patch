@@ -1,0 +1,52 @@
+acts-as-list-migrate
+
+From: Bryan Larsen <bryan@larsen.st>
+
+The migration generator knows about `acts_as_list`, so you can just
+run it and you'll get the new position column on Task.
+
+    $ hobo generate migration
+
+And that's it!
+---
+ db/migrate/20110419124628_install_acts_as_list.rb |    9 +++++++++
+ db/schema.rb                                      |    3 ++-
+ 2 files changed, 11 insertions(+), 1 deletions(-)
+ create mode 100644 db/migrate/20110419124628_install_acts_as_list.rb
+
+diff --git a/db/migrate/20110419124628_install_acts_as_list.rb b/db/migrate/20110419124628_install_acts_as_list.rb
+new file mode 100644
+index 0000000..e82939e
+--- /dev/null
++++ b/db/migrate/20110419124628_install_acts_as_list.rb
+@@ -0,0 +1,9 @@
++class InstallActsAsList < ActiveRecord::Migration
++  def self.up
++    add_column :tasks, :position, :integer
++  end
++
++  def self.down
++    remove_column :tasks, :position
++  end
++end
+diff --git a/db/schema.rb b/db/schema.rb
+index 5882498..47746cc 100644
+--- a/db/schema.rb
++++ b/db/schema.rb
+@@ -10,7 +10,7 @@
+ #
+ # It's strongly recommended to check this file into your version control system.
+ 
+-ActiveRecord::Schema.define(:version => 20110418140729) do
++ActiveRecord::Schema.define(:version => 20110419124628) do
+ 
+   create_table "projects", :force => true do |t|
+     t.string   "name"
+@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20110418140729) do
+     t.datetime "created_at"
+     t.datetime "updated_at"
+     t.integer  "story_id"
++    t.integer  "position"
+   end
+ 
+   add_index "tasks", ["story_id"], :name => "index_tasks_on_story_id"

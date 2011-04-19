@@ -1,0 +1,420 @@
+generate-initial-models
+
+From: Bryan Larsen <bryan@larsen.st>
+
+# The models
+
+Let's review what we want this app to do:
+
+ * Track multiple projects
+ * Each having a collection of stories
+ * Stories are just a brief chunk of text
+ * A story can be assigned a current status and a set of outstanding tasks
+ * Tasks can be assigned to users
+ * Users can get an easy heads up of the tasks they are assigned to
+
+Sounds to me like we just sketched a first-cut of our models. We'll start with:
+
+ * `Project` (with a name)
+	has many stories
+ * `Story` (with a title, description and status)
+	belongs to a project
+	has many tasks
+ * `Task` (with a description)
+	belongs to a story
+	has many users (through task-assignments)
+ * `User` (we'll stick with the standard fields provided by Hobo)
+	has many tasks (through task-assignments)
+
+Hopefully the connection between the goal and those models is clear. If not, you'll probably find it gets easier once you've done it a few times. Before long you'll be throwing models into your app without even stopping to write the names down. Of course -- chances are you've got something wrong, made a bad decision. So? Just throw them away and create some new ones when the time comes. We're sketching here!
+
+Here's how we create these with a Hobo generator:
+
+	$ hobo generate resource project name:string
+	$ hobo generate resource story   title:string body:text status:string
+	$ hobo generate resource task    description:string
+
+Task assignments are just a back-end model. They don't need a controller, so:
+
+	$ hobo generate model task_assignment
+---
+ app/controllers/projects_controller.rb      |    7 ++++++
+ app/controllers/stories_controller.rb       |    7 ++++++
+ app/controllers/tasks_controller.rb         |    7 ++++++
+ app/models/project.rb                       |   28 +++++++++++++++++++++++++
+ app/models/story.rb                         |   30 +++++++++++++++++++++++++++
+ app/models/task.rb                          |   28 +++++++++++++++++++++++++
+ app/models/task_assignment.rb               |   27 ++++++++++++++++++++++++
+ test/fixtures/projects.yml                  |   11 ++++++++++
+ test/fixtures/stories.yml                   |   11 ++++++++++
+ test/fixtures/task_assignments.yml          |   11 ++++++++++
+ test/fixtures/tasks.yml                     |   11 ++++++++++
+ test/functional/projects_controller_test.rb |    8 +++++++
+ test/functional/stories_controller_test.rb  |    8 +++++++
+ test/functional/tasks_controller_test.rb    |    8 +++++++
+ test/unit/project_test.rb                   |    8 +++++++
+ test/unit/story_test.rb                     |    8 +++++++
+ test/unit/task_assignment_test.rb           |    8 +++++++
+ test/unit/task_test.rb                      |    8 +++++++
+ 18 files changed, 234 insertions(+), 0 deletions(-)
+ create mode 100644 app/controllers/projects_controller.rb
+ create mode 100644 app/controllers/stories_controller.rb
+ create mode 100644 app/controllers/tasks_controller.rb
+ create mode 100644 app/models/project.rb
+ create mode 100644 app/models/story.rb
+ create mode 100644 app/models/task.rb
+ create mode 100644 app/models/task_assignment.rb
+ create mode 100644 test/fixtures/projects.yml
+ create mode 100644 test/fixtures/stories.yml
+ create mode 100644 test/fixtures/task_assignments.yml
+ create mode 100644 test/fixtures/tasks.yml
+ create mode 100644 test/functional/projects_controller_test.rb
+ create mode 100644 test/functional/stories_controller_test.rb
+ create mode 100644 test/functional/tasks_controller_test.rb
+ create mode 100644 test/unit/project_test.rb
+ create mode 100644 test/unit/story_test.rb
+ create mode 100644 test/unit/task_assignment_test.rb
+ create mode 100644 test/unit/task_test.rb
+
+diff --git a/app/controllers/projects_controller.rb b/app/controllers/projects_controller.rb
+new file mode 100644
+index 0000000..210b07d
+--- /dev/null
++++ b/app/controllers/projects_controller.rb
+@@ -0,0 +1,7 @@
++class ProjectsController < ApplicationController
++
++  hobo_model_controller
++
++  auto_actions :all
++
++end
+diff --git a/app/controllers/stories_controller.rb b/app/controllers/stories_controller.rb
+new file mode 100644
+index 0000000..f0dd368
+--- /dev/null
++++ b/app/controllers/stories_controller.rb
+@@ -0,0 +1,7 @@
++class StoriesController < ApplicationController
++
++  hobo_model_controller
++
++  auto_actions :all
++
++end
+diff --git a/app/controllers/tasks_controller.rb b/app/controllers/tasks_controller.rb
+new file mode 100644
+index 0000000..f5a4f00
+--- /dev/null
++++ b/app/controllers/tasks_controller.rb
+@@ -0,0 +1,7 @@
++class TasksController < ApplicationController
++
++  hobo_model_controller
++
++  auto_actions :all
++
++end
+diff --git a/app/models/project.rb b/app/models/project.rb
+new file mode 100644
+index 0000000..b157c29
+--- /dev/null
++++ b/app/models/project.rb
+@@ -0,0 +1,28 @@
++class Project < ActiveRecord::Base
++
++  hobo_model # Don't put anything above this
++
++  fields do
++    name :string
++    timestamps
++  end
++
++  # --- Permissions --- #
++
++  def create_permitted?
++    acting_user.administrator?
++  end
++
++  def update_permitted?
++    acting_user.administrator?
++  end
++
++  def destroy_permitted?
++    acting_user.administrator?
++  end
++
++  def view_permitted?(field)
++    true
++  end
++
++end
+diff --git a/app/models/story.rb b/app/models/story.rb
+new file mode 100644
+index 0000000..41e2761
+--- /dev/null
++++ b/app/models/story.rb
+@@ -0,0 +1,30 @@
++class Story < ActiveRecord::Base
++
++  hobo_model # Don't put anything above this
++
++  fields do
++    title  :string
++    body   :text
++    status :string
++    timestamps
++  end
++
++  # --- Permissions --- #
++
++  def create_permitted?
++    acting_user.administrator?
++  end
++
++  def update_permitted?
++    acting_user.administrator?
++  end
++
++  def destroy_permitted?
++    acting_user.administrator?
++  end
++
++  def view_permitted?(field)
++    true
++  end
++
++end
+diff --git a/app/models/task.rb b/app/models/task.rb
+new file mode 100644
+index 0000000..9a30863
+--- /dev/null
++++ b/app/models/task.rb
+@@ -0,0 +1,28 @@
++class Task < ActiveRecord::Base
++
++  hobo_model # Don't put anything above this
++
++  fields do
++    description :string
++    timestamps
++  end
++
++  # --- Permissions --- #
++
++  def create_permitted?
++    acting_user.administrator?
++  end
++
++  def update_permitted?
++    acting_user.administrator?
++  end
++
++  def destroy_permitted?
++    acting_user.administrator?
++  end
++
++  def view_permitted?(field)
++    true
++  end
++
++end
+diff --git a/app/models/task_assignment.rb b/app/models/task_assignment.rb
+new file mode 100644
+index 0000000..b5c2ac1
+--- /dev/null
++++ b/app/models/task_assignment.rb
+@@ -0,0 +1,27 @@
++class TaskAssignment < ActiveRecord::Base
++
++  hobo_model # Don't put anything above this
++
++  fields do
++    timestamps
++  end
++
++  # --- Permissions --- #
++
++  def create_permitted?
++    acting_user.administrator?
++  end
++
++  def update_permitted?
++    acting_user.administrator?
++  end
++
++  def destroy_permitted?
++    acting_user.administrator?
++  end
++
++  def view_permitted?(field)
++    true
++  end
++
++end
+diff --git a/test/fixtures/projects.yml b/test/fixtures/projects.yml
+new file mode 100644
+index 0000000..2893341
+--- /dev/null
++++ b/test/fixtures/projects.yml
+@@ -0,0 +1,11 @@
++# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++
++# This model initially had no columns defined.  If you add columns to the
++# model remove the '{}' from the fixture names and add the columns immediately
++# below each fixture, per the syntax in the comments below
++#
++one: {}
++# column: value
++#
++two: {}
++#  column: value
+diff --git a/test/fixtures/stories.yml b/test/fixtures/stories.yml
+new file mode 100644
+index 0000000..2893341
+--- /dev/null
++++ b/test/fixtures/stories.yml
+@@ -0,0 +1,11 @@
++# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++
++# This model initially had no columns defined.  If you add columns to the
++# model remove the '{}' from the fixture names and add the columns immediately
++# below each fixture, per the syntax in the comments below
++#
++one: {}
++# column: value
++#
++two: {}
++#  column: value
+diff --git a/test/fixtures/task_assignments.yml b/test/fixtures/task_assignments.yml
+new file mode 100644
+index 0000000..2893341
+--- /dev/null
++++ b/test/fixtures/task_assignments.yml
+@@ -0,0 +1,11 @@
++# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++
++# This model initially had no columns defined.  If you add columns to the
++# model remove the '{}' from the fixture names and add the columns immediately
++# below each fixture, per the syntax in the comments below
++#
++one: {}
++# column: value
++#
++two: {}
++#  column: value
+diff --git a/test/fixtures/tasks.yml b/test/fixtures/tasks.yml
+new file mode 100644
+index 0000000..2893341
+--- /dev/null
++++ b/test/fixtures/tasks.yml
+@@ -0,0 +1,11 @@
++# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++
++# This model initially had no columns defined.  If you add columns to the
++# model remove the '{}' from the fixture names and add the columns immediately
++# below each fixture, per the syntax in the comments below
++#
++one: {}
++# column: value
++#
++two: {}
++#  column: value
+diff --git a/test/functional/projects_controller_test.rb b/test/functional/projects_controller_test.rb
+new file mode 100644
+index 0000000..461ec39
+--- /dev/null
++++ b/test/functional/projects_controller_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class ProjectsControllerTest < ActionController::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end
+diff --git a/test/functional/stories_controller_test.rb b/test/functional/stories_controller_test.rb
+new file mode 100644
+index 0000000..c036784
+--- /dev/null
++++ b/test/functional/stories_controller_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class StoriesControllerTest < ActionController::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end
+diff --git a/test/functional/tasks_controller_test.rb b/test/functional/tasks_controller_test.rb
+new file mode 100644
+index 0000000..cb48c05
+--- /dev/null
++++ b/test/functional/tasks_controller_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class TasksControllerTest < ActionController::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end
+diff --git a/test/unit/project_test.rb b/test/unit/project_test.rb
+new file mode 100644
+index 0000000..bc23a8a
+--- /dev/null
++++ b/test/unit/project_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class ProjectTest < ActiveSupport::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end
+diff --git a/test/unit/story_test.rb b/test/unit/story_test.rb
+new file mode 100644
+index 0000000..53dac56
+--- /dev/null
++++ b/test/unit/story_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class StoryTest < ActiveSupport::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end
+diff --git a/test/unit/task_assignment_test.rb b/test/unit/task_assignment_test.rb
+new file mode 100644
+index 0000000..d4b6295
+--- /dev/null
++++ b/test/unit/task_assignment_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class TaskAssignmentTest < ActiveSupport::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end
+diff --git a/test/unit/task_test.rb b/test/unit/task_test.rb
+new file mode 100644
+index 0000000..b667a66
+--- /dev/null
++++ b/test/unit/task_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class TaskTest < ActiveSupport::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end

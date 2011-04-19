@@ -1,0 +1,18 @@
+translating
+
+From: Bryan Larsen <bryan@larsen.st>
+
+# Translating the Application
+
+A lot of Hoboists are foreign, so let's translate our application so they feel at home.
+
+First we'll make a couple of temporary tweaks to our `config/environment.rb` file.
+
+SHOW_PATCH
+
+The first tweak changes the default locale to French.  Normally you want to set the locale dynamically, perhaps based on the domain name.   However, that's outside the scope of this tutorial.   See [the Rails guide to i18n](http://guides.rubyonrails.org/i18n.html) for more information.
+
+The second tweak sets the `HOBO_VERSBOSE_TRANSLATIONS` flag.  This causes the Hobo translater to log whenever it does a translation.   This lets you determine the translation keys that it is looking up.
+---
+ 0 files changed, 0 insertions(+), 0 deletions(-)
+

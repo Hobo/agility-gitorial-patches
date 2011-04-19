@@ -1,0 +1,26 @@
+add-your-projects-to-front
+
+From: Bryan Larsen <bryan@larsen.st>
+
+Finally, let's add a handy list of "Your Projects" to the home page. Edit the content-body section of `app/views/front/index.dryml` to be:
+
+SHOW_PATCH
+---
+ app/views/front/index.dryml |    4 +++-
+ 1 files changed, 3 insertions(+), 1 deletions(-)
+
+diff --git a/app/views/front/index.dryml b/app/views/front/index.dryml
+index f07d85b..291ccee 100644
+--- a/app/views/front/index.dryml
++++ b/app/views/front/index.dryml
+@@ -23,7 +23,9 @@
+       </section>
+     </header>
+ 
+-    <section class="content-body">
++    <section class="content-body" if="&logged_in?">
++      <h3>Your Projects</h3>
++      <collection:projects with="&current_user"/>
+     </section>
+   </content:>
+ 

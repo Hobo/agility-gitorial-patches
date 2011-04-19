@@ -1,0 +1,42 @@
+viewhints-children
+
+From: Bryan Larsen <bryan@larsen.st>
+
+# Specifying view relationships
+
+If we tell Hobo which has\_many relationships are significant, Hobo adjusts to display the list of children on its parent's page.
+
+We added five has\_many relationships, but only two of them are significant, for now.  We specify these in the model file for the parent.
+
+SHOW_PATCH
+---
+ app/models/project.rb |    2 ++
+ app/models/story.rb   |    2 ++
+ 2 files changed, 4 insertions(+), 0 deletions(-)
+
+diff --git a/app/models/project.rb b/app/models/project.rb
+index a6f4e3b..94193f0 100644
+--- a/app/models/project.rb
++++ b/app/models/project.rb
+@@ -8,6 +8,8 @@ class Project < ActiveRecord::Base
+   end
+ 
+   has_many :stories, :dependent => :destroy
++  
++  children :stories
+ 
+   # --- Permissions --- #
+ 
+diff --git a/app/models/story.rb b/app/models/story.rb
+index 1d3b609..be77499 100644
+--- a/app/models/story.rb
++++ b/app/models/story.rb
+@@ -13,6 +13,8 @@ class Story < ActiveRecord::Base
+ 
+   has_many :tasks, :dependent => :destroy
+ 
++  children :tasks
++
+   # --- Permissions --- #
+ 
+   def create_permitted?

@@ -1,0 +1,39 @@
+move-membership-to-sidebar
+
+From: Bryan Larsen <bryan@larsen.st>
+
+## The view layer
+
+We would like the list of project memberships to appear in a side-bar
+on the project show page, so the page will now display two
+collections: stories and memberships. We can tell Rapid that these are
+the two collections we are interested in using Hobo's view hints.
+Edit the project model like this:
+
+SHOW_PATCH
+
+Note that view hints are defined in the model.   This is not a great
+place for them, but it is better than the alternatives.
+
+It is very common for websites to present information in a hierarchy, and this `children` declaration tells Hobo about the hierarchy of your data. The order is significant; in this example `stories` is the 'main' child relationship, and `memberships` is secondary. The Rapid page generators use this information and place the `stories` collection in the main area of the page, and an aside section will be added for the `memberships`.
+
+Refresh any project page and you should see the collection, which will be empty of course, in a side-bar.
+---
+ app/models/project.rb |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/app/models/project.rb b/app/models/project.rb
+index 36d0b6e..e0a51fa 100644
+--- a/app/models/project.rb
++++ b/app/models/project.rb
+@@ -8,8 +8,8 @@ class Project < ActiveRecord::Base
+   end
+ 
+   has_many :stories, :dependent => :destroy
+-  
+-  children :stories
++
++  children :stories, :memberships
+ 
+   has_many :memberships, :class_name => "ProjectMembership", :dependent => :destroy
+   has_many :members, :through => :memberships, :source => :user

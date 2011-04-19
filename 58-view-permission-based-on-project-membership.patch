@@ -1,0 +1,54 @@
+view-permission-based-on-project-membership
+
+From: Bryan Larsen <bryan@larsen.st>
+
+Note that users now have two collections of projects: `projects` are the projects that users own, and `joined_projects` are the projects they have joined as members.
+
+We can now define view permission on projects, stories and tasks according to project membership.
+
+SHOW_PATCH
+---
+ app/models/project.rb |    2 +-
+ app/models/story.rb   |    2 +-
+ app/models/task.rb    |    2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/app/models/project.rb b/app/models/project.rb
+index 6da6b2a..36d0b6e 100644
+--- a/app/models/project.rb
++++ b/app/models/project.rb
+@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
+   end
+ 
+   def view_permitted?(field)
+-    true
++    acting_user.administrator? || acting_user == owner || acting_user.in?(members)
+   end
+ 
+ end
+diff --git a/app/models/story.rb b/app/models/story.rb
+index 1cb5d9b..b4fd32f 100644
+--- a/app/models/story.rb
++++ b/app/models/story.rb
+@@ -30,7 +30,7 @@ class Story < ActiveRecord::Base
+   end
+ 
+   def view_permitted?(field)
+-    true
++    project.viewable_by?(acting_user)
+   end
+ 
+ end
+diff --git a/app/models/task.rb b/app/models/task.rb
+index 3a7a404..18b02d2 100644
+--- a/app/models/task.rb
++++ b/app/models/task.rb
+@@ -29,7 +29,7 @@ class Task < ActiveRecord::Base
+   end
+ 
+   def view_permitted?(field)
+-    true
++    story.viewable_by?(acting_user)
+   end
+ 
+ end

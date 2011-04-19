@@ -1,0 +1,115 @@
+generate-project-membership
+
+From: Bryan Larsen <bryan@larsen.st>
+
+# Granting read access to others
+
+Now that we've got users owning their own projects, it seems wrong that any signed-up user can view any project. On the other hand it wouldn't make any sense to hide the project from everyone. What we need is a way for the project owner to grant others access.
+
+We can model this with a ProjectMembership model that represents access for a specific user and project:
+
+    $ hobo generate resource project_membership
+---
+ app/controllers/project_memberships_controller.rb  |    7 +++++
+ app/models/project_membership.rb                   |   27 ++++++++++++++++++++
+ test/fixtures/project_memberships.yml              |   11 ++++++++
+ .../project_memberships_controller_test.rb         |    8 ++++++
+ test/unit/project_membership_test.rb               |    8 ++++++
+ 5 files changed, 61 insertions(+), 0 deletions(-)
+ create mode 100644 app/controllers/project_memberships_controller.rb
+ create mode 100644 app/models/project_membership.rb
+ create mode 100644 test/fixtures/project_memberships.yml
+ create mode 100644 test/functional/project_memberships_controller_test.rb
+ create mode 100644 test/unit/project_membership_test.rb
+
+diff --git a/app/controllers/project_memberships_controller.rb b/app/controllers/project_memberships_controller.rb
+new file mode 100644
+index 0000000..aa14a80
+--- /dev/null
++++ b/app/controllers/project_memberships_controller.rb
+@@ -0,0 +1,7 @@
++class ProjectMembershipsController < ApplicationController
++
++  hobo_model_controller
++
++  auto_actions :all
++
++end
+diff --git a/app/models/project_membership.rb b/app/models/project_membership.rb
+new file mode 100644
+index 0000000..190efec
+--- /dev/null
++++ b/app/models/project_membership.rb
+@@ -0,0 +1,27 @@
++class ProjectMembership < ActiveRecord::Base
++
++  hobo_model # Don't put anything above this
++
++  fields do
++    timestamps
++  end
++
++  # --- Permissions --- #
++
++  def create_permitted?
++    acting_user.administrator?
++  end
++
++  def update_permitted?
++    acting_user.administrator?
++  end
++
++  def destroy_permitted?
++    acting_user.administrator?
++  end
++
++  def view_permitted?(field)
++    true
++  end
++
++end
+diff --git a/test/fixtures/project_memberships.yml b/test/fixtures/project_memberships.yml
+new file mode 100644
+index 0000000..2893341
+--- /dev/null
++++ b/test/fixtures/project_memberships.yml
+@@ -0,0 +1,11 @@
++# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++
++# This model initially had no columns defined.  If you add columns to the
++# model remove the '{}' from the fixture names and add the columns immediately
++# below each fixture, per the syntax in the comments below
++#
++one: {}
++# column: value
++#
++two: {}
++#  column: value
+diff --git a/test/functional/project_memberships_controller_test.rb b/test/functional/project_memberships_controller_test.rb
+new file mode 100644
+index 0000000..cdae6b9
+--- /dev/null
++++ b/test/functional/project_memberships_controller_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class ProjectMembershipsControllerTest < ActionController::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end
+diff --git a/test/unit/project_membership_test.rb b/test/unit/project_membership_test.rb
+new file mode 100644
+index 0000000..8716e6b
+--- /dev/null
++++ b/test/unit/project_membership_test.rb
+@@ -0,0 +1,8 @@
++require 'test_helper'
++
++class ProjectMembershipTest < ActiveSupport::TestCase
++  # Replace this with your real tests.
++  test "the truth" do
++    assert true
++  end
++end

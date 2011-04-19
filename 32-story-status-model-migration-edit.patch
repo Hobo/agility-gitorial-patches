@@ -1,0 +1,25 @@
+story-status-model-migration-edit
+
+From: Bryan Larsen <bryan@larsen.st>
+
+You can always edit the migration before running it. For example you could create some initial story statuses by adding this code to the `self.up` method:
+
+SHOW_PATCH
+---
+ .../20110418140729_add_story_status_model.rb       |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/db/migrate/20110418140729_add_story_status_model.rb b/db/migrate/20110418140729_add_story_status_model.rb
+index 4372ea9..5b05104 100644
+--- a/db/migrate/20110418140729_add_story_status_model.rb
++++ b/db/migrate/20110418140729_add_story_status_model.rb
+@@ -10,6 +10,9 @@ class AddStoryStatusModel < ActiveRecord::Migration
+     remove_column :stories, :status
+ 
+     add_index :stories, [:status_id]
++
++    statuses = %w(new accepted discussion implementation user_testing deployed rejected)
++    statuses.each { |status| StoryStatus.create :name => status }
+   end
+ 
+   def self.down

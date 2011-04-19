@@ -1,0 +1,59 @@
+migrate-project-memberships
+
+From: Bryan Larsen <bryan@larsen.st>
+
+Run the migration generator to have the required foreign keys added to
+the database:
+
+    $ hobo g migration
+---
+ .../20110419132125_add_project_membership.rb       |   16 ++++++++++++++++
+ db/schema.rb                                       |   12 +++++++++++-
+ 2 files changed, 27 insertions(+), 1 deletions(-)
+ create mode 100644 db/migrate/20110419132125_add_project_membership.rb
+
+diff --git a/db/migrate/20110419132125_add_project_membership.rb b/db/migrate/20110419132125_add_project_membership.rb
+new file mode 100644
+index 0000000..fa66b3c
+--- /dev/null
++++ b/db/migrate/20110419132125_add_project_membership.rb
+@@ -0,0 +1,16 @@
++class AddProjectMembership < ActiveRecord::Migration
++  def self.up
++    create_table :project_memberships do |t|
++      t.datetime :created_at
++      t.datetime :updated_at
++      t.integer  :project_id
++      t.integer  :user_id
++    end
++    add_index :project_memberships, [:project_id]
++    add_index :project_memberships, [:user_id]
++  end
++
++  def self.down
++    drop_table :project_memberships
++  end
++end
+diff --git a/db/schema.rb b/db/schema.rb
+index 53a95ed..ae2660a 100644
+--- a/db/schema.rb
++++ b/db/schema.rb
+@@ -10,7 +10,17 @@
+ #
+ # It's strongly recommended to check this file into your version control system.
+ 
+-ActiveRecord::Schema.define(:version => 20110419124953) do
++ActiveRecord::Schema.define(:version => 20110419132125) do
++
++  create_table "project_memberships", :force => true do |t|
++    t.datetime "created_at"
++    t.datetime "updated_at"
++    t.integer  "project_id"
++    t.integer  "user_id"
++  end
++
++  add_index "project_memberships", ["project_id"], :name => "index_project_memberships_on_project_id"
++  add_index "project_memberships", ["user_id"], :name => "index_project_memberships_on_user_id"
+ 
+   create_table "projects", :force => true do |t|
+     t.string   "name"
