@@ -30,10 +30,10 @@ index 0000000..e82939e
 +  end
 +end
 diff --git a/db/schema.rb b/db/schema.rb
-index 5882498..47746cc 100644
+index a37fb0a..76a3949 100644
 --- a/db/schema.rb
 +++ b/db/schema.rb
-@@ -10,7 +10,7 @@
+@@ -11,7 +11,7 @@
  #
  # It's strongly recommended to check this file into your version control system.
  
@@ -42,7 +42,7 @@ index 5882498..47746cc 100644
  
    create_table "projects", :force => true do |t|
      t.string   "name"
-@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20110418140729) do
+@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20110418140729) do
      t.datetime "created_at"
      t.datetime "updated_at"
      t.integer  "story_id"

@@ -1,0 +1,47 @@
+# Translating the Application
+
+From: Bryan Larsen <bryan@larsen.st>
+
+A lot of Hobos speak languages other than English, so let's translate our application so they feel at home.
+
+First we'll make a couple of temporary tweaks to our configuration.
+
+SHOW_PATCH
+
+The tweak to `config/application.rb` shows you where to change the default locale.  Normally you want to set the locale dynamically, perhaps based on the domain name.   However, that's outside the scope of this tutorial.   See [the Rails guide to i18n](http://guides.rubyonrails.org/i18n.html) for more information.
+
+The tweak to `config/environments/development.rb` tells Hobo to show
+the keys used to generate each string.  This makes the application
+look like a mess, so you'll want to turn this off as soon as you have
+a handle on your translation.
+---
+ config/application.rb              |    2 +-
+ config/environments/development.rb |    3 +++
+ 2 files changed, 4 insertions(+), 1 deletions(-)
+
+diff --git a/config/application.rb b/config/application.rb
+index f2ba6a3..b2f4f6b 100644
+--- a/config/application.rb
++++ b/config/application.rb
+@@ -38,7 +38,7 @@ module Agility
+ 
+     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
+     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+-    # config.i18n.default_locale = :de
++    config.i18n.default_locale = :en
+ 
+     # JavaScript files you want as :defaults (application.js is always included).
+     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+diff --git a/config/environments/development.rb b/config/environments/development.rb
+index 23a6728..bd76420 100644
+--- a/config/environments/development.rb
++++ b/config/environments/development.rb
+@@ -22,5 +22,8 @@ Agility::Application.configure do
+ 
+   # Only use best-standards-support built into browsers
+   config.action_dispatch.best_standards_support = :builtin
++
++  # turn this off after you're done translating
++  config.hobo.show_translation_keys = true
+ end
+ 

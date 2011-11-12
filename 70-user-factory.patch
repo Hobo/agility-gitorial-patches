@@ -1,0 +1,45 @@
+user-factory
+
+From: Bryan Larsen <bryan@larsen.st>
+
+## Your First Unit Test
+
+Unit tests are by far the easiest type of test to write in Rails, as
+well as the quickest to run.  However, they can only test code in your
+models.  For this and other reasons, you should try and put as much of
+your program's logic into your model as possible.   (Google for
+"skinny controller, fat model" for other reasons.)
+
+Because Agility is a demonstration program, it really does not have
+much logic in the models.   Looking through our models, we can quickly
+determine that the User model is the heaviest, so let us test that.
+
+We're going to need some data to test, so let us set up a factory:
+
+SHOW_PATCH
+---
+ test/factories/user_factory.rb |   15 +++++++++++++++
+ 1 files changed, 15 insertions(+), 0 deletions(-)
+ create mode 100644 test/factories/user_factory.rb
+
+diff --git a/test/factories/user_factory.rb b/test/factories/user_factory.rb
+new file mode 100644
+index 0000000..fbf236d
+--- /dev/null
++++ b/test/factories/user_factory.rb
+@@ -0,0 +1,15 @@
++FactoryGirl.define do
++  factory :user do
++    name 'Test User'
++    email_address 'test@example.com'
++    administrator false
++    state "active"
++  end
++
++  factory :admin, :class => User do
++    name 'Admin User'
++    email_address 'admin@example.com'
++    administrator true
++    state "active"
++  end
++end

@@ -110,10 +110,10 @@ index 0000000..99f3e9e
 +  end
 +end
 diff --git a/db/schema.rb b/db/schema.rb
-index ae2660a..289c29a 100644
+index 4fe0302..ef6c3ee 100644
 --- a/db/schema.rb
 +++ b/db/schema.rb
-@@ -10,13 +10,14 @@
+@@ -11,13 +11,14 @@
  #
  # It's strongly recommended to check this file into your version control system.
  

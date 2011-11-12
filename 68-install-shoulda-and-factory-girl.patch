@@ -1,0 +1,74 @@
+install-shoulda-and-factory-girl
+
+From: Bryan Larsen <bryan@larsen.st>
+
+# Unit Testing
+
+They say that an application without tests is a broken application, so
+lets add some unit tests.
+
+When starting out with Rails testing, you are faced with a bewildering
+array of choices.   It's outside the scope of this tutorial to guide
+you through these choices, but I will give you one piece of advice:
+any tests are better than no tests.   Do not get caught up in
+"analysis paralysis" -- don't spend so much time trying to analyze
+which choices are right for you that you don't do any testing at all.
+If you change your mind later, it isn't that hard to translate tests
+from one environment to another.
+
+Also be aware that choices that are good for one area are not
+necessarily good for another.  You might use a factory for unit
+testing, but fixtures for integration testing, for example.
+
+For this tutorial we're going to go with a more mainstream choice:
+Test::Unit with Shoulda for the test DSL and FactoryGirl with Faker to
+create test data.
+
+I'm going to give a special shout out here to
+[IRT](https://github.com/ddnexus/irt),  which is written by the same
+man who ported Hobo to Rails3: Domizio Demichelis.  It offers a unique
+paradigm that makes it easy to simultaneously develop code and tests.
+Highly recommended.
+
+We aren't going to use IRT in this tutorial, but there's nothing
+stopping you from writing both Test::Unit and IRT tests in the same
+application.
+
+When we initially generated our application, we didn't customize our
+test framework.   So let's revisit that decision.
+
+    $ hobo generate test_framework shoulda --fixture_replacement=factory_girl
+    $ bundle install
+---
+ Gemfile               |    2 ++
+ config/application.rb |    7 +++++++
+ 2 files changed, 9 insertions(+), 0 deletions(-)
+
+diff --git a/Gemfile b/Gemfile
+index ff94325..57bd919 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -31,3 +31,5 @@ gem 'sqlite3'
+ # end
+ gem "hobo", "= 1.3.0.RC4"
+ gem "bluecloth"
++gem "shoulda", :group => :test
++gem "factory_girl_rails", :group => :test
+diff --git a/config/application.rb b/config/application.rb
+index fa64c90..f2ba6a3 100644
+--- a/config/application.rb
++++ b/config/application.rb
+@@ -9,6 +9,13 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
+ module Agility
+   class Application < Rails::Application
+   
++    config.generators do |g|
++      g.test_framework :shoulda, :fixtures => true
++      g.fallbacks[:shoulda] = :test_unit
++      g.fixture_replacement = :factory_girl_rails
++    end
++
++  
+   config.hobo.dryml_only_templates = true
+ 
+     # Settings in config/environments/* take precedence over those specified here.

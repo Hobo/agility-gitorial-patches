@@ -1,0 +1,30 @@
+trivial-unit-test
+
+From: Bryan Larsen <bryan@larsen.st>
+
+Let us write a simple test to verify our factory works:
+
+SHOW_PATCH
+
+now type
+
+    $ rake test:units
+
+to verify that your tests run.
+---
+ test/unit/user_test.rb |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/test/unit/user_test.rb b/test/unit/user_test.rb
+index a64d2d3..b563c81 100644
+--- a/test/unit/user_test.rb
++++ b/test/unit/user_test.rb
+@@ -3,6 +3,7 @@ require 'test_helper'
+ class UserTest < ActiveSupport::TestCase
+   # Replace this with your real tests.
+   test "the truth" do
+-    assert true
++    @user = create :user
++    assert_equal "Test User", @user.name
+   end
+ end

@@ -15,7 +15,7 @@ SHOW_PATCH
  1 files changed, 5 insertions(+), 0 deletions(-)
 
 diff --git a/app/controllers/users_controller.rb b/app/controllers/users_controller.rb
-index 299c267..f3d06e9 100644
+index 299c267..cb4692c 100644
 --- a/app/controllers/users_controller.rb
 +++ b/app/controllers/users_controller.rb
 @@ -18,6 +18,11 @@ class UsersController < ApplicationController
@@ -26,7 +26,7 @@ index 299c267..f3d06e9 100644
 +        # FIXME: remove these two lines after you get email working reliably
 +        # and before your application leaves its sandbox...
 +        secret_path = user_activate_path :id=>this.id, :key => this.lifecycle.key
-+        flash[:notice] << "The 'secret' link that was just emailed was: <a id='activation-link' href='#{secret_path}'>#{secret_path}</a>."
++        flash[:notice] = "Thanks for signing up!  The 'secret' link that was just emailed was: <a id='activation-link' href='#{secret_path}'>#{secret_path}</a>.".html_safe
        end
      end
    end

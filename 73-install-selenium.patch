@@ -1,0 +1,40 @@
+install-selenium
+
+From: Bryan Larsen <bryan@larsen.st>
+
+# Integration Testing
+
+It's not a real application without tests.  We're going to use
+[Selenium](http://seleniumhq.org/) to do some integration testing.
+
+The easiest way to use selenium with rails is to use `capybara`.   We'll
+also need database_cleaner because capybara/selenium does not support
+transactional fixtures.
+
+Add to your Gemfile:
+
+    group :development, :test do
+      gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+      gem 'database_cleaner;
+    end
+---
+ Gemfile |    7 +++++++
+ 1 files changed, 7 insertions(+), 0 deletions(-)
+
+diff --git a/Gemfile b/Gemfile
+index 57bd919..dfa7280 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -31,5 +31,12 @@ gem 'sqlite3'
+ # end
+ gem "hobo", "= 1.3.0.RC4"
+ gem "bluecloth"
++
+ gem "shoulda", :group => :test
+ gem "factory_girl_rails", :group => :test
++
++group :development, :test do
++  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
++  gem 'database_cleaner'
++end
++
