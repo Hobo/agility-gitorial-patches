@@ -128,5 +128,28 @@ Finally we'll customise the look of the aside section which is used on the proje
     .aside {padding: 20px; margin: 40px 25px 0 0;}
     .aside-content h2, .aside-content h3 {border-bottom: 1px solid #ccc; margin-top: 0;}
 ---
- 0 files changed, 0 insertions(+), 0 deletions(-)
+ .gitignore                         |    1 +
+ config/environments/development.rb |    2 +-
+ 2 files changed, 2 insertions(+), 1 deletions(-)
 
+diff --git a/.gitignore b/.gitignore
+index bf00625..2c01966 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -5,3 +5,4 @@ tmp/
+ app/views/taglibs/auto/**/*
+ config/hobo_routes.rb
+ Gemfile.lock
++patches-master
+diff --git a/config/environments/development.rb b/config/environments/development.rb
+index bd76420..6d837e6 100644
+--- a/config/environments/development.rb
++++ b/config/environments/development.rb
+@@ -24,6 +24,6 @@ Agility::Application.configure do
+   config.action_dispatch.best_standards_support = :builtin
+ 
+   # turn this off after you're done translating
+-  config.hobo.show_translation_keys = true
++  # config.hobo.show_translation_keys = true
+ end
+ 
