@@ -15,9 +15,9 @@ To recreate the gitorial from this patchset:
     git add README
     git commit --cleanup=verbatim -m ""
     stg init
-    stg import -i -s ../series
+    stg import -i --reject -s ../series
 
-You'll have to issue that last command repeatedly because stg import
+You may have to issue that last command repeatedly because stg import
 chokes on empty patches.
 
 Then load the plugins:
@@ -43,6 +43,9 @@ edit`.
 Once you have completed the gitorial, you can export any changes:
 
     stg export -n -epatch -d ..
+
+Note that you may have to use version 1.6 of git.  Versions 1.7 and
+later choke on empty patches.
 
 Please send your changes to [me](mailto:bryan@larsen.st) so I can
 update the gitorial for everybody!
