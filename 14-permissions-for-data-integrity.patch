@@ -19,10 +19,10 @@ Now make a similar change to prevent tasks being moved from one story to another
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index f10790e..c0c55d0 100644
+index 4140718..a7437d4 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
-@@ -22,7 +22,7 @@ class Story < ActiveRecord::Base
+@@ -24,7 +24,7 @@ class Story < ActiveRecord::Base
    end
  
    def update_permitted?
@@ -32,10 +32,10 @@ index f10790e..c0c55d0 100644
  
    def destroy_permitted?
 diff --git a/app/models/task.rb b/app/models/task.rb
-index 9e5e356..27aaae1 100644
+index e641251..a7559f8 100644
 --- a/app/models/task.rb
 +++ b/app/models/task.rb
-@@ -19,7 +19,7 @@ class Task < ActiveRecord::Base
+@@ -20,7 +20,7 @@ class Task < ActiveRecord::Base
    end
  
    def update_permitted?

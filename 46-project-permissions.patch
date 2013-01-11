@@ -12,10 +12,10 @@ Note that in the `create_permitted?` method, we assert that `owner_is? acting_us
  1 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index 5149ffd..93ef903 100644
+index cac656a..9ee931c 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
-@@ -16,15 +16,15 @@ class Project < ActiveRecord::Base
+@@ -18,15 +18,15 @@ class Project < ActiveRecord::Base
    # --- Permissions --- #
  
    def create_permitted?

@@ -10,14 +10,14 @@ SHOW_PATCH
  1 files changed, 2 insertions(+), 0 deletions(-)
 
 diff --git a/app/models/user.rb b/app/models/user.rb
-index 8c62bc5..4d847bc 100644
+index 6bf0d8b..275b816 100644
 --- a/app/models/user.rb
 +++ b/app/models/user.rb
-@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
-   has_many :task_assignments, :dependent => :destroy
+@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
+   has_many :task_assignments, :dependent => :destroy, :inverse_of => :user
    has_many :tasks, :through => :task_assignments
-   has_many :projects, :class_name => "Project", :foreign_key => "owner_id"
-+  has_many :project_memberships, :dependent => :destroy
+   has_many :projects, :class_name => "Project", :foreign_key => "owner_id", :inverse_of => :owner
++  has_many :project_memberships, :dependent => :destroy, :inverse_of => :user
 +  has_many :joined_projects, :through => :project_memberships, :source => :project
  
    # This gives admin rights and an :active state to the first sign-up.

@@ -2,17 +2,20 @@ filtering-stories-by-status-css
 
 From: Bryan Larsen <bryan@larsen.st>
 
-To make the filter look right, add this to `public/stylesheets/application.css`
+To make the filter look right, create a file `app/assets/stylesheets/front/agility-custom-styles.css`
 
 SHOW_PATCH
 ---
- public/stylesheets/application.css |    2 ++
- 1 files changed, 2 insertions(+), 0 deletions(-)
+ .../stylesheets/front/agility-custom-styles.css    |    3 +++
+ 1 files changed, 3 insertions(+), 0 deletions(-)
+ create mode 100644 app/assets/stylesheets/front/agility-custom-styles.css
 
-diff --git a/public/stylesheets/application.css b/public/stylesheets/application.css
-index e69de29..9fc31c9 100644
---- a/public/stylesheets/application.css
-+++ b/public/stylesheets/application.css
-@@ -0,0 +1,2 @@
+diff --git a/app/assets/stylesheets/front/agility-custom-styles.css b/app/assets/stylesheets/front/agility-custom-styles.css
+new file mode 100644
+index 0000000..ab6dd83
+--- /dev/null
++++ b/app/assets/stylesheets/front/agility-custom-styles.css
+@@ -0,0 +1,3 @@
 +.show-page.project .filter {float: left;}
 +.show-page.project .filter form, .show-page.project .filter form div {display: inline;}
++

@@ -6,16 +6,16 @@ Run the migration generator to see the effect on the app:
 
     $ hobo generate migration
 ---
- db/migrate/20110419124953_project_ownership.rb |   13 +++++++++++++
+ db/migrate/20130109025834_project_ownership.rb |   13 +++++++++++++
  db/schema.rb                                   |    5 ++++-
  2 files changed, 17 insertions(+), 1 deletions(-)
- create mode 100644 db/migrate/20110419124953_project_ownership.rb
+ create mode 100644 db/migrate/20130109025834_project_ownership.rb
 
-diff --git a/db/migrate/20110419124953_project_ownership.rb b/db/migrate/20110419124953_project_ownership.rb
+diff --git a/db/migrate/20130109025834_project_ownership.rb b/db/migrate/20130109025834_project_ownership.rb
 new file mode 100644
 index 0000000..bd0160d
 --- /dev/null
-+++ b/db/migrate/20110419124953_project_ownership.rb
++++ b/db/migrate/20130109025834_project_ownership.rb
 @@ -0,0 +1,13 @@
 +class ProjectOwnership < ActiveRecord::Migration
 +  def self.up
@@ -31,18 +31,19 @@ index 0000000..bd0160d
 +  end
 +end
 diff --git a/db/schema.rb b/db/schema.rb
-index 76a3949..e754c70 100644
+index e5a1412..d06a30a 100644
 --- a/db/schema.rb
 +++ b/db/schema.rb
-@@ -11,14 +11,17 @@
+@@ -11,15 +11,18 @@
  #
  # It's strongly recommended to check this file into your version control system.
  
--ActiveRecord::Schema.define(:version => 20110419124628) do
-+ActiveRecord::Schema.define(:version => 20110419124953) do
+-ActiveRecord::Schema.define(:version => 20130109024936) do
++ActiveRecord::Schema.define(:version => 20130109025834) do
  
    create_table "projects", :force => true do |t|
      t.string   "name"
+     t.integer  "stories_count", :default => 0, :null => false
      t.datetime "created_at"
      t.datetime "updated_at"
 +    t.integer  "owner_id"

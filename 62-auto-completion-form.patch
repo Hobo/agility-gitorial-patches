@@ -14,17 +14,18 @@ Some things to note:
 
  - The `<name-one>` tag creates an input field for the user association with auto-completion.
 ---
- app/views/projects/show.dryml |   13 +++++++++++++
- 1 files changed, 13 insertions(+), 0 deletions(-)
+ app/views/projects/show.dryml |   15 ++++++++++++++-
+ 1 files changed, 14 insertions(+), 1 deletions(-)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
-index 2e397ff..85d9355 100644
+index e79d1d0..1e9f38a 100644
 --- a/app/views/projects/show.dryml
 +++ b/app/views/projects/show.dryml
 @@ -9,4 +9,17 @@
      <empty-message:>No stories match your criteria</empty-message:>
    </table-plus>
    </collection:>
+-</show-page>
 +
 +  <aside:>
 +    <h2>Project Members</h2>
@@ -38,5 +39,5 @@ index 2e397ff..85d9355 100644
 +    </form>
 +  </aside:>
 +
- </show-page>
++</show-page>
 \ No newline at end of file

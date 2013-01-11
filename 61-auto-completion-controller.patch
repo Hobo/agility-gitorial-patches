@@ -14,7 +14,7 @@ SHOW_PATCH
  1 files changed, 2 insertions(+), 0 deletions(-)
 
 diff --git a/app/controllers/users_controller.rb b/app/controllers/users_controller.rb
-index cb4692c..bb9894f 100644
+index 4052c0d..265c770 100644
 --- a/app/controllers/users_controller.rb
 +++ b/app/controllers/users_controller.rb
 @@ -4,6 +4,8 @@ class UsersController < ApplicationController
@@ -23,6 +23,6 @@ index cb4692c..bb9894f 100644
  
 +  autocomplete
 +
-   def create
-     hobo_create do
-       if valid?
+   # Normally, users should be created via the user lifecycle, except
+   #  for the initial user created via the form on the front screen on
+   #  first run.  This method creates the initial user.

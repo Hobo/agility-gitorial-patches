@@ -14,10 +14,10 @@ SHOW_PATCH
  3 files changed, 10 insertions(+), 10 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index cdca475..1cb5d9b 100644
+index d0b97a9..17f2cb9 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
-@@ -18,15 +18,15 @@ class Story < ActiveRecord::Base
+@@ -20,15 +20,15 @@ class Story < ActiveRecord::Base
    # --- Permissions --- #
  
    def create_permitted?
@@ -37,10 +37,10 @@ index cdca475..1cb5d9b 100644
  
    def view_permitted?(field)
 diff --git a/app/models/task.rb b/app/models/task.rb
-index 76308f0..3a7a404 100644
+index 1516794..7894bf4 100644
 --- a/app/models/task.rb
 +++ b/app/models/task.rb
-@@ -17,15 +17,15 @@ class Task < ActiveRecord::Base
+@@ -18,15 +18,15 @@ class Task < ActiveRecord::Base
    # --- Permissions --- #
  
    def create_permitted?
@@ -60,10 +60,10 @@ index 76308f0..3a7a404 100644
  
    def view_permitted?(field)
 diff --git a/app/models/task_assignment.rb b/app/models/task_assignment.rb
-index b420c68..8f11a46 100644
+index 8b3a892..5ff8749 100644
 --- a/app/models/task_assignment.rb
 +++ b/app/models/task_assignment.rb
-@@ -12,19 +12,19 @@ class TaskAssignment < ActiveRecord::Base
+@@ -13,19 +13,19 @@ class TaskAssignment < ActiveRecord::Base
    # --- Permissions --- #
  
    def create_permitted?

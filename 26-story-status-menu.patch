@@ -19,7 +19,7 @@ Job done. If you want the gory details, `enum_string` is a *type constructor*. I
  1 files changed, 1 insertions(+), 1 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index c0c55d0..f87cf2d 100644
+index a7437d4..b086ca4 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
 @@ -5,7 +5,7 @@ class Story < ActiveRecord::Base
@@ -28,6 +28,6 @@ index c0c55d0..f87cf2d 100644
      body   :text
 -    status :string
 +    status enum_string(:new, :accepted, :discussion, :implementation)
+     tasks_count :integer, :default => 0, :null => false
      timestamps
    end
- 

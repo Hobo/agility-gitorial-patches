@@ -10,7 +10,7 @@ SHOW_PATCH
  1 files changed, 3 insertions(+), 1 deletions(-)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
-index d15c65e..c961469 100644
+index 60b06d9..13b6be5 100644
 --- a/app/views/projects/show.dryml
 +++ b/app/views/projects/show.dryml
 @@ -12,7 +12,9 @@

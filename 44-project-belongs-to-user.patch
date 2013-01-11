@@ -16,14 +16,14 @@ There's a Hobo extension there: `:creator => true` tells Hobo that when creating
  1 files changed, 2 insertions(+), 0 deletions(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index 94193f0..5149ffd 100644
+index 09933f0..cac656a 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
-@@ -11,6 +11,8 @@ class Project < ActiveRecord::Base
-   
+@@ -13,6 +13,8 @@ class Project < ActiveRecord::Base
+ 
    children :stories
  
-+  belongs_to :owner, :class_name => "User", :creator => true
++  belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :project
 +
    # --- Permissions --- #
  

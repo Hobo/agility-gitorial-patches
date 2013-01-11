@@ -84,12 +84,12 @@ custom controllers and models or vice versa.
  1 files changed, 5 insertions(+), 0 deletions(-)
 
 diff --git a/app/views/taglibs/application.dryml b/app/views/taglibs/application.dryml
-index 2e24802..03fe5d8 100644
+index dc60cac..64cfb4b 100644
 --- a/app/views/taglibs/application.dryml
 +++ b/app/views/taglibs/application.dryml
-@@ -33,3 +33,8 @@
-   </old-card>
- </extend>
+@@ -1,3 +1,8 @@
+ <!-- this file is included by front_site.dryml, admin_site.dryml et al, so
+ you can place common code in this file. -->
  
 +<def tag="main-nav">
 +  <navigation class="main-nav" merge-attrs>

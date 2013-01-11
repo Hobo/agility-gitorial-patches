@@ -5,85 +5,103 @@ From: Bryan Larsen <bryan@larsen.st>
 The field declarations have been created by the generators, but not the associations. Go ahead and add the associations, just below the `fields do ... end` declaration in each model, as follows:
 
 SHOW_PATCH
+
+We're also adding counter\_cache columns to make it easier to sort on the count.
 ---
- app/models/project.rb         |    2 ++
- app/models/story.rb           |    4 ++++
- app/models/task.rb            |    5 +++++
- app/models/task_assignment.rb |    3 +++
- app/models/user.rb            |    5 +++++
- 5 files changed, 19 insertions(+), 0 deletions(-)
+ app/models/project.rb         |    5 ++++-
+ app/models/story.rb           |    7 ++++++-
+ app/models/task.rb            |    7 ++++++-
+ app/models/task_assignment.rb |    5 ++++-
+ app/models/user.rb            |    7 ++++++-
+ 5 files changed, 26 insertions(+), 5 deletions(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index b157c29..a6f4e3b 100644
+index a05a01f..cc3d5dc 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
-@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
+@@ -4,9 +4,12 @@ class Project < ActiveRecord::Base
+ 
+   fields do
+     name :string
++    stories_count :integer, :default => 0, :null => false
      timestamps
    end
- 
-+  has_many :stories, :dependent => :destroy
+-  attr_accessible :name
++  attr_accessible :name, :stories
 +
++  has_many :stories, :dependent => :destroy, :inverse_of => :project
+ 
    # --- Permissions --- #
  
-   def create_permitted?
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 41e2761..1d3b609 100644
+index ab1e10c..53e1b86 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
-@@ -9,6 +9,10 @@ class Story < ActiveRecord::Base
+@@ -6,9 +6,14 @@ class Story < ActiveRecord::Base
+     title  :string
+     body   :text
+     status :string
++    tasks_count :integer, :default => 0, :null => false
      timestamps
    end
+-  attr_accessible :title, :body, :status
++  attr_accessible :title, :body, :status, :project, :project_id, :tasks
++
++  belongs_to :project, :inverse_of => :stories, :counter_cache => true
++
++  has_many :tasks, :dependent => :destroy, :inverse_of => :story
  
-+  belongs_to :project
-+
-+  has_many :tasks, :dependent => :destroy
-+
    # --- Permissions --- #
  
-   def create_permitted?
 diff --git a/app/models/task.rb b/app/models/task.rb
-index 9a30863..f79516b 100644
+index 4e9376e..62b1bd1 100644
 --- a/app/models/task.rb
 +++ b/app/models/task.rb
-@@ -7,6 +7,11 @@ class Task < ActiveRecord::Base
+@@ -6,7 +6,12 @@ class Task < ActiveRecord::Base
+     description :string
      timestamps
    end
- 
-+  belongs_to :story
+-  attr_accessible :description
++  attr_accessible :description, :story, :story_id, :task_assignments, :users
 +
-+  has_many :task_assignments, :dependent => :destroy
++  belongs_to :story, :inverse_of => :tasks, :counter_cache => true
++
++  has_many :task_assignments, :dependent => :destroy, :inverse_of => :task
 +  has_many :users, :through => :task_assignments
-+
+ 
    # --- Permissions --- #
  
-   def create_permitted?
 diff --git a/app/models/task_assignment.rb b/app/models/task_assignment.rb
-index b5c2ac1..b420c68 100644
+index 8536a45..8b3a892 100644
 --- a/app/models/task_assignment.rb
 +++ b/app/models/task_assignment.rb
-@@ -6,6 +6,9 @@ class TaskAssignment < ActiveRecord::Base
+@@ -5,7 +5,10 @@ class TaskAssignment < ActiveRecord::Base
+   fields do
      timestamps
    end
- 
-+  belongs_to :user
-+  belongs_to :task
+-  attr_accessible 
++  attr_accessible :user, :user_id, :task, :task_id
 +
++  belongs_to :user, :inverse_of => :task_assignments
++  belongs_to :task, :inverse_of => :task_assignments
+ 
    # --- Permissions --- #
  
-   def create_permitted?
 diff --git a/app/models/user.rb b/app/models/user.rb
-index 248f9fd..6c79ebe 100644
+index 32600a3..e406a43 100644
 --- a/app/models/user.rb
 +++ b/app/models/user.rb
-@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
+@@ -8,7 +8,12 @@ class User < ActiveRecord::Base
+     administrator :boolean, :default => false
      timestamps
    end
- 
+-  attr_accessible :name, :email_address, :password, :password_confirmation
++  attr_accessible :name, :email_address, :password, :password_confirmation, :task_assignments, :tasks
++
 +  validates_presence_of :name
 +
-+  has_many :task_assignments, :dependent => :destroy
++  has_many :task_assignments, :dependent => :destroy, :inverse_of => :user
 +  has_many :tasks, :through => :task_assignments
-+
+ 
    # This gives admin rights and an :active state to the first sign-up.
    # Just remove it if you don't want that
-   before_create do |user|

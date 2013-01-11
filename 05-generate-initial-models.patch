@@ -1,6 +1,10 @@
-generate-initial-models
+From: Bryan Larsen <bryan@larsen.st>
 
 From: Bryan Larsen <bryan@larsen.st>
+
+Date: 2013-01-08 10:12:13 -0500
+
+generate-initial-models
 
 # The models
 
@@ -41,22 +45,22 @@ Task assignments are just a back-end model. They don't need a controller, so:
  app/controllers/projects_controller.rb      |    7 ++++++
  app/controllers/stories_controller.rb       |    7 ++++++
  app/controllers/tasks_controller.rb         |    7 ++++++
- app/models/project.rb                       |   28 +++++++++++++++++++++++++
- app/models/story.rb                         |   30 +++++++++++++++++++++++++++
- app/models/task.rb                          |   28 +++++++++++++++++++++++++
- app/models/task_assignment.rb               |   27 ++++++++++++++++++++++++
+ app/models/project.rb                       |   29 +++++++++++++++++++++++++
+ app/models/story.rb                         |   31 +++++++++++++++++++++++++++
+ app/models/task.rb                          |   29 +++++++++++++++++++++++++
+ app/models/task_assignment.rb               |   28 ++++++++++++++++++++++++
  test/fixtures/projects.yml                  |   11 ++++++++++
  test/fixtures/stories.yml                   |   11 ++++++++++
  test/fixtures/task_assignments.yml          |   11 ++++++++++
  test/fixtures/tasks.yml                     |   11 ++++++++++
- test/functional/projects_controller_test.rb |    8 +++++++
- test/functional/stories_controller_test.rb  |    8 +++++++
- test/functional/tasks_controller_test.rb    |    8 +++++++
- test/unit/project_test.rb                   |    8 +++++++
- test/unit/story_test.rb                     |    8 +++++++
- test/unit/task_assignment_test.rb           |    8 +++++++
- test/unit/task_test.rb                      |    8 +++++++
- 18 files changed, 234 insertions(+), 0 deletions(-)
+ test/functional/projects_controller_test.rb |    7 ++++++
+ test/functional/stories_controller_test.rb  |    7 ++++++
+ test/functional/tasks_controller_test.rb    |    7 ++++++
+ test/unit/project_test.rb                   |    7 ++++++
+ test/unit/story_test.rb                     |    7 ++++++
+ test/unit/task_assignment_test.rb           |    7 ++++++
+ test/unit/task_test.rb                      |    7 ++++++
+ 18 files changed, 231 insertions(+), 0 deletions(-)
  create mode 100644 app/controllers/projects_controller.rb
  create mode 100644 app/controllers/stories_controller.rb
  create mode 100644 app/controllers/tasks_controller.rb
@@ -117,10 +121,10 @@ index 0000000..f5a4f00
 +end
 diff --git a/app/models/project.rb b/app/models/project.rb
 new file mode 100644
-index 0000000..b157c29
+index 0000000..a05a01f
 --- /dev/null
 +++ b/app/models/project.rb
-@@ -0,0 +1,28 @@
+@@ -0,0 +1,29 @@
 +class Project < ActiveRecord::Base
 +
 +  hobo_model # Don't put anything above this
@@ -129,6 +133,7 @@ index 0000000..b157c29
 +    name :string
 +    timestamps
 +  end
++  attr_accessible :name
 +
 +  # --- Permissions --- #
 +
@@ -151,10 +156,10 @@ index 0000000..b157c29
 +end
 diff --git a/app/models/story.rb b/app/models/story.rb
 new file mode 100644
-index 0000000..41e2761
+index 0000000..ab1e10c
 --- /dev/null
 +++ b/app/models/story.rb
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,31 @@
 +class Story < ActiveRecord::Base
 +
 +  hobo_model # Don't put anything above this
@@ -165,6 +170,7 @@ index 0000000..41e2761
 +    status :string
 +    timestamps
 +  end
++  attr_accessible :title, :body, :status
 +
 +  # --- Permissions --- #
 +
@@ -187,10 +193,10 @@ index 0000000..41e2761
 +end
 diff --git a/app/models/task.rb b/app/models/task.rb
 new file mode 100644
-index 0000000..9a30863
+index 0000000..4e9376e
 --- /dev/null
 +++ b/app/models/task.rb
-@@ -0,0 +1,28 @@
+@@ -0,0 +1,29 @@
 +class Task < ActiveRecord::Base
 +
 +  hobo_model # Don't put anything above this
@@ -199,6 +205,7 @@ index 0000000..9a30863
 +    description :string
 +    timestamps
 +  end
++  attr_accessible :description
 +
 +  # --- Permissions --- #
 +
@@ -221,10 +228,10 @@ index 0000000..9a30863
 +end
 diff --git a/app/models/task_assignment.rb b/app/models/task_assignment.rb
 new file mode 100644
-index 0000000..b5c2ac1
+index 0000000..8536a45
 --- /dev/null
 +++ b/app/models/task_assignment.rb
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,28 @@
 +class TaskAssignment < ActiveRecord::Base
 +
 +  hobo_model # Don't put anything above this
@@ -232,6 +239,7 @@ index 0000000..b5c2ac1
 +  fields do
 +    timestamps
 +  end
++  attr_accessible 
 +
 +  # --- Permissions --- #
 +
@@ -254,11 +262,11 @@ index 0000000..b5c2ac1
 +end
 diff --git a/test/fixtures/projects.yml b/test/fixtures/projects.yml
 new file mode 100644
-index 0000000..2893341
+index 0000000..c63aac0
 --- /dev/null
 +++ b/test/fixtures/projects.yml
 @@ -0,0 +1,11 @@
-+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 +
 +# This model initially had no columns defined.  If you add columns to the
 +# model remove the '{}' from the fixture names and add the columns immediately
@@ -271,11 +279,11 @@ index 0000000..2893341
 +#  column: value
 diff --git a/test/fixtures/stories.yml b/test/fixtures/stories.yml
 new file mode 100644
-index 0000000..2893341
+index 0000000..c63aac0
 --- /dev/null
 +++ b/test/fixtures/stories.yml
 @@ -0,0 +1,11 @@
-+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 +
 +# This model initially had no columns defined.  If you add columns to the
 +# model remove the '{}' from the fixture names and add the columns immediately
@@ -288,11 +296,11 @@ index 0000000..2893341
 +#  column: value
 diff --git a/test/fixtures/task_assignments.yml b/test/fixtures/task_assignments.yml
 new file mode 100644
-index 0000000..2893341
+index 0000000..c63aac0
 --- /dev/null
 +++ b/test/fixtures/task_assignments.yml
 @@ -0,0 +1,11 @@
-+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 +
 +# This model initially had no columns defined.  If you add columns to the
 +# model remove the '{}' from the fixture names and add the columns immediately
@@ -305,11 +313,11 @@ index 0000000..2893341
 +#  column: value
 diff --git a/test/fixtures/tasks.yml b/test/fixtures/tasks.yml
 new file mode 100644
-index 0000000..2893341
+index 0000000..c63aac0
 --- /dev/null
 +++ b/test/fixtures/tasks.yml
 @@ -0,0 +1,11 @@
-+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 +
 +# This model initially had no columns defined.  If you add columns to the
 +# model remove the '{}' from the fixture names and add the columns immediately
@@ -322,99 +330,92 @@ index 0000000..2893341
 +#  column: value
 diff --git a/test/functional/projects_controller_test.rb b/test/functional/projects_controller_test.rb
 new file mode 100644
-index 0000000..461ec39
+index 0000000..c098166
 --- /dev/null
 +++ b/test/functional/projects_controller_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class ProjectsControllerTest < ActionController::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end
 diff --git a/test/functional/stories_controller_test.rb b/test/functional/stories_controller_test.rb
 new file mode 100644
-index 0000000..c036784
+index 0000000..8974eb3
 --- /dev/null
 +++ b/test/functional/stories_controller_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class StoriesControllerTest < ActionController::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end
 diff --git a/test/functional/tasks_controller_test.rb b/test/functional/tasks_controller_test.rb
 new file mode 100644
-index 0000000..cb48c05
+index 0000000..ab48b11
 --- /dev/null
 +++ b/test/functional/tasks_controller_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class TasksControllerTest < ActionController::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end
 diff --git a/test/unit/project_test.rb b/test/unit/project_test.rb
 new file mode 100644
-index 0000000..bc23a8a
+index 0000000..0821e1f
 --- /dev/null
 +++ b/test/unit/project_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class ProjectTest < ActiveSupport::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end
 diff --git a/test/unit/story_test.rb b/test/unit/story_test.rb
 new file mode 100644
-index 0000000..53dac56
+index 0000000..30d14dd
 --- /dev/null
 +++ b/test/unit/story_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class StoryTest < ActiveSupport::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end
 diff --git a/test/unit/task_assignment_test.rb b/test/unit/task_assignment_test.rb
 new file mode 100644
-index 0000000..d4b6295
+index 0000000..19da271
 --- /dev/null
 +++ b/test/unit/task_assignment_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class TaskAssignmentTest < ActiveSupport::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end
 diff --git a/test/unit/task_test.rb b/test/unit/task_test.rb
 new file mode 100644
-index 0000000..b667a66
+index 0000000..3ca2159
 --- /dev/null
 +++ b/test/unit/task_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class TaskTest < ActiveSupport::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end

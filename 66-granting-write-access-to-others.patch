@@ -27,19 +27,19 @@ And a helper method that might come in handy when implementing your permission m
 ---
  app/models/project.rb                             |   10 +++++++++-
  app/models/project_membership.rb                  |    1 +
- app/views/taglibs/application.dryml               |   12 +++++++++++-
- db/migrate/20110419140701_projcet_contributors.rb |    9 +++++++++
+ app/views/taglibs/front_site.dryml                |    9 +++++++++
+ db/migrate/20130109032331_project_contributors.rb |    9 +++++++++
  db/schema.rb                                      |    3 ++-
- 5 files changed, 32 insertions(+), 3 deletions(-)
- create mode 100644 db/migrate/20110419140701_projcet_contributors.rb
+ 5 files changed, 30 insertions(+), 2 deletions(-)
+ create mode 100644 db/migrate/20130109032331_project_contributors.rb
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index e0a51fa..23679fa 100644
+index f2c1b09..e352c83 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
-@@ -16,6 +16,14 @@ class Project < ActiveRecord::Base
- 
+@@ -19,6 +19,14 @@ class Project < ActiveRecord::Base
    belongs_to :owner, :class_name => "User", :creator => true
+   belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :project
  
 +  has_many :contributor_memberships, :class_name => "ProjectMembership", :scope => :contributor
 +  has_many :contributors, :through => :contributor_memberships, :source => :user
@@ -52,7 +52,7 @@ index e0a51fa..23679fa 100644
    # --- Permissions --- #
  
    def create_permitted?
-@@ -23,7 +31,7 @@ class Project < ActiveRecord::Base
+@@ -26,7 +34,7 @@ class Project < ActiveRecord::Base
    end
  
    def update_permitted?
@@ -62,7 +62,7 @@ index e0a51fa..23679fa 100644
  
    def destroy_permitted?
 diff --git a/app/models/project_membership.rb b/app/models/project_membership.rb
-index b7cc12e..33c2285 100644
+index 143d1b7..853cd0b 100644
 --- a/app/models/project_membership.rb
 +++ b/app/models/project_membership.rb
 @@ -3,6 +3,7 @@ class ProjectMembership < ActiveRecord::Base
@@ -72,18 +72,15 @@ index b7cc12e..33c2285 100644
 +    contributor :boolean, :default => false
      timestamps
    end
- 
-diff --git a/app/views/taglibs/application.dryml b/app/views/taglibs/application.dryml
-index e2b8215..2e24802 100644
---- a/app/views/taglibs/application.dryml
-+++ b/app/views/taglibs/application.dryml
-@@ -22,4 +22,14 @@
-   <old-form merge>
+   attr_accessible 
+diff --git a/app/views/taglibs/front_site.dryml b/app/views/taglibs/front_site.dryml
+index 45ab983..fd2976e 100644
+--- a/app/views/taglibs/front_site.dryml
++++ b/app/views/taglibs/front_site.dryml
+@@ -31,3 +31,12 @@
      <field-list: fields="description, users"/>
    </old-form>
--</extend>
-\ No newline at end of file
-+</extend>
+ </extend>
 +
 +<extend tag="card" for="ProjectMembership">
 +  <old-card merge>
@@ -93,14 +90,13 @@ index e2b8215..2e24802 100644
 +    </body:>
 +  </old-card>
 +</extend>
-+
-diff --git a/db/migrate/20110419140701_projcet_contributors.rb b/db/migrate/20110419140701_projcet_contributors.rb
+diff --git a/db/migrate/20130109032331_project_contributors.rb b/db/migrate/20130109032331_project_contributors.rb
 new file mode 100644
-index 0000000..99f3e9e
+index 0000000..d7423c2
 --- /dev/null
-+++ b/db/migrate/20110419140701_projcet_contributors.rb
++++ b/db/migrate/20130109032331_project_contributors.rb
 @@ -0,0 +1,9 @@
-+class ProjcetContributors < ActiveRecord::Migration
++class ProjectContributors < ActiveRecord::Migration
 +  def self.up
 +    add_column :project_memberships, :contributor, :boolean, :default => false
 +  end
@@ -110,15 +106,15 @@ index 0000000..99f3e9e
 +  end
 +end
 diff --git a/db/schema.rb b/db/schema.rb
-index 4fe0302..ef6c3ee 100644
+index e5d0419..1ea68ed 100644
 --- a/db/schema.rb
 +++ b/db/schema.rb
 @@ -11,13 +11,14 @@
  #
  # It's strongly recommended to check this file into your version control system.
  
--ActiveRecord::Schema.define(:version => 20110419132125) do
-+ActiveRecord::Schema.define(:version => 20110419140701) do
+-ActiveRecord::Schema.define(:version => 20130109030838) do
++ActiveRecord::Schema.define(:version => 20130109032331) do
  
    create_table "project_memberships", :force => true do |t|
      t.datetime "created_at"

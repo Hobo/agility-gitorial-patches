@@ -19,21 +19,19 @@ It is very common for websites to present information in a hierarchy, and this `
 
 Refresh any project page and you should see the collection, which will be empty of course, in a side-bar.
 ---
- app/models/project.rb |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ app/models/project.rb |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index 36d0b6e..e0a51fa 100644
+index c75b482..f2c1b09 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
-@@ -8,8 +8,8 @@ class Project < ActiveRecord::Base
-   end
+@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
  
-   has_many :stories, :dependent => :destroy
--  
+   has_many :stories, :dependent => :destroy, :inverse_of => :project
+ 
 -  children :stories
-+
 +  children :stories, :memberships
  
-   has_many :memberships, :class_name => "ProjectMembership", :dependent => :destroy
+   has_many :memberships, :class_name => "ProjectMembership", :dependent => :destroy, :inverse_of => :project
    has_many :members, :through => :memberships, :source => :user

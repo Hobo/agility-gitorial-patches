@@ -10,7 +10,7 @@ SHOW_PATCH
  1 files changed, 3 insertions(+), 1 deletions(-)
 
 diff --git a/app/views/front/index.dryml b/app/views/front/index.dryml
-index f07d85b..291ccee 100644
+index 5ee72fb..eadb165 100644
 --- a/app/views/front/index.dryml
 +++ b/app/views/front/index.dryml
 @@ -23,7 +23,9 @@

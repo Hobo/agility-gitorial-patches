@@ -10,15 +10,15 @@ You'll see that the migration generator considers this change to be ambiguous. W
 
 Once you've done that you'll see that the generated migration includes the creation of the new foreign key and the removal of the old status column.  Press `g` now to generate the migration without running it.
 ---
- .../20110418140729_add_story_status_model.rb       |   23 ++++++++++++++++++++
+ .../20130109022053_add_story_status_model.rb       |   23 ++++++++++++++++++++
  1 files changed, 23 insertions(+), 0 deletions(-)
- create mode 100644 db/migrate/20110418140729_add_story_status_model.rb
+ create mode 100644 db/migrate/20130109022053_add_story_status_model.rb
 
-diff --git a/db/migrate/20110418140729_add_story_status_model.rb b/db/migrate/20110418140729_add_story_status_model.rb
+diff --git a/db/migrate/20130109022053_add_story_status_model.rb b/db/migrate/20130109022053_add_story_status_model.rb
 new file mode 100644
 index 0000000..4372ea9
 --- /dev/null
-+++ b/db/migrate/20110418140729_add_story_status_model.rb
++++ b/db/migrate/20130109022053_add_story_status_model.rb
 @@ -0,0 +1,23 @@
 +class AddStoryStatusModel < ActiveRecord::Migration
 +  def self.up

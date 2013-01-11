@@ -11,11 +11,11 @@ We can model this with a ProjectMembership model that represents access for a sp
     $ hobo generate resource project_membership
 ---
  app/controllers/project_memberships_controller.rb  |    7 +++++
- app/models/project_membership.rb                   |   27 ++++++++++++++++++++
+ app/models/project_membership.rb                   |   28 ++++++++++++++++++++
  test/fixtures/project_memberships.yml              |   11 ++++++++
- .../project_memberships_controller_test.rb         |    8 ++++++
- test/unit/project_membership_test.rb               |    8 ++++++
- 5 files changed, 61 insertions(+), 0 deletions(-)
+ .../project_memberships_controller_test.rb         |    7 +++++
+ test/unit/project_membership_test.rb               |    7 +++++
+ 5 files changed, 60 insertions(+), 0 deletions(-)
  create mode 100644 app/controllers/project_memberships_controller.rb
  create mode 100644 app/models/project_membership.rb
  create mode 100644 test/fixtures/project_memberships.yml
@@ -37,10 +37,10 @@ index 0000000..aa14a80
 +end
 diff --git a/app/models/project_membership.rb b/app/models/project_membership.rb
 new file mode 100644
-index 0000000..190efec
+index 0000000..982242c
 --- /dev/null
 +++ b/app/models/project_membership.rb
-@@ -0,0 +1,27 @@
+@@ -0,0 +1,28 @@
 +class ProjectMembership < ActiveRecord::Base
 +
 +  hobo_model # Don't put anything above this
@@ -48,6 +48,7 @@ index 0000000..190efec
 +  fields do
 +    timestamps
 +  end
++  attr_accessible 
 +
 +  # --- Permissions --- #
 +
@@ -70,11 +71,11 @@ index 0000000..190efec
 +end
 diff --git a/test/fixtures/project_memberships.yml b/test/fixtures/project_memberships.yml
 new file mode 100644
-index 0000000..2893341
+index 0000000..c63aac0
 --- /dev/null
 +++ b/test/fixtures/project_memberships.yml
 @@ -0,0 +1,11 @@
-+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
++# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 +
 +# This model initially had no columns defined.  If you add columns to the
 +# model remove the '{}' from the fixture names and add the columns immediately
@@ -87,29 +88,27 @@ index 0000000..2893341
 +#  column: value
 diff --git a/test/functional/project_memberships_controller_test.rb b/test/functional/project_memberships_controller_test.rb
 new file mode 100644
-index 0000000..cdae6b9
+index 0000000..03ed478
 --- /dev/null
 +++ b/test/functional/project_memberships_controller_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class ProjectMembershipsControllerTest < ActionController::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end
 diff --git a/test/unit/project_membership_test.rb b/test/unit/project_membership_test.rb
 new file mode 100644
-index 0000000..8716e6b
+index 0000000..82a2274
 --- /dev/null
 +++ b/test/unit/project_membership_test.rb
-@@ -0,0 +1,8 @@
+@@ -0,0 +1,7 @@
 +require 'test_helper'
 +
 +class ProjectMembershipTest < ActiveSupport::TestCase
-+  # Replace this with your real tests.
-+  test "the truth" do
-+    assert true
-+  end
++  # test "the truth" do
++  #   assert true
++  # end
 +end

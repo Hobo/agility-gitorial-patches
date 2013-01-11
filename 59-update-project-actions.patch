@@ -14,7 +14,7 @@ Note that there won't be a link to that new-project page by default -- we'll add
  1 files changed, 3 insertions(+), 1 deletions(-)
 
 diff --git a/app/controllers/projects_controller.rb b/app/controllers/projects_controller.rb
-index 3a75081..caa8d5a 100644
+index ea06cbf..3d8fd81 100644
 --- a/app/controllers/projects_controller.rb
 +++ b/app/controllers/projects_controller.rb
 @@ -2,7 +2,9 @@ class ProjectsController < ApplicationController

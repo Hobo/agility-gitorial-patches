@@ -14,10 +14,10 @@ SHOW_PATCH
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index 6da6b2a..36d0b6e 100644
+index 12db4f2..c75b482 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
-@@ -31,7 +31,7 @@ class Project < ActiveRecord::Base
+@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
    end
  
    def view_permitted?(field)
@@ -27,10 +27,10 @@ index 6da6b2a..36d0b6e 100644
  
  end
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 1cb5d9b..b4fd32f 100644
+index 17f2cb9..4fa50d7 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
-@@ -30,7 +30,7 @@ class Story < ActiveRecord::Base
+@@ -32,7 +32,7 @@ class Story < ActiveRecord::Base
    end
  
    def view_permitted?(field)
@@ -40,10 +40,10 @@ index 1cb5d9b..b4fd32f 100644
  
  end
 diff --git a/app/models/task.rb b/app/models/task.rb
-index 3a7a404..18b02d2 100644
+index 7894bf4..05f119d 100644
 --- a/app/models/task.rb
 +++ b/app/models/task.rb
-@@ -29,7 +29,7 @@ class Task < ActiveRecord::Base
+@@ -30,7 +30,7 @@ class Task < ActiveRecord::Base
    end
  
    def view_permitted?(field)

@@ -6,20 +6,21 @@ Let's do the other ends of those two belongs-to associations. In the Project mod
 
 SHOW_PATCH
 ---
- app/models/project.rb |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ app/models/project.rb |    4 ++++
+ 1 files changed, 4 insertions(+), 0 deletions(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index 93ef903..6da6b2a 100644
+index 9ee931c..12db4f2 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
-@@ -11,6 +11,9 @@ class Project < ActiveRecord::Base
-   
+@@ -13,6 +13,10 @@ class Project < ActiveRecord::Base
+ 
    children :stories
  
-+  has_many :memberships, :class_name => "ProjectMembership", :dependent => :destroy
++  has_many :memberships, :class_name => "ProjectMembership", :dependent => :destroy, :inverse_of => :project
 +  has_many :members, :through => :memberships, :source => :user
 +
-   belongs_to :owner, :class_name => "User", :creator => true
++  belongs_to :owner, :class_name => "User", :creator => true
+   belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :project
  
    # --- Permissions --- #

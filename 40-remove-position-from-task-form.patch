@@ -8,14 +8,14 @@ In `application.dryml` add:
 
 SHOW_PATCH
 ---
- app/views/taglibs/application.dryml |    6 ++++++
+ app/views/taglibs/front_site.dryml |    6 ++++++
  1 files changed, 6 insertions(+), 0 deletions(-)
 
-diff --git a/app/views/taglibs/application.dryml b/app/views/taglibs/application.dryml
-index 2838a3e..e2b8215 100644
---- a/app/views/taglibs/application.dryml
-+++ b/app/views/taglibs/application.dryml
-@@ -17,3 +17,9 @@
+diff --git a/app/views/taglibs/front_site.dryml b/app/views/taglibs/front_site.dryml
+index 7f6da4c..45ab983 100644
+--- a/app/views/taglibs/front_site.dryml
++++ b/app/views/taglibs/front_site.dryml
+@@ -25,3 +25,9 @@
      </append-body:>
    </old-card>
  </extend>
@@ -25,4 +25,3 @@ index 2838a3e..e2b8215 100644
 +    <field-list: fields="description, users"/>
 +  </old-form>
 +</extend>
-\ No newline at end of file

@@ -6,23 +6,39 @@ Next, remove the 'status' field from the `fields do ... end` block in the Story 
 
 SHOW_PATCH
 ---
- app/models/story.rb |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ app/models/story.rb        |    2 +-
+ app/models/story_status.rb |    2 ++
+ 2 files changed, 3 insertions(+), 1 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index f87cf2d..ee47f9c 100644
+index b086ca4..30cf951 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
-@@ -5,11 +5,11 @@ class Story < ActiveRecord::Base
+@@ -5,13 +5,13 @@ class Story < ActiveRecord::Base
    fields do
      title  :string
      body   :text
 -    status enum_string(:new, :accepted, :discussion, :implementation)
+     tasks_count :integer, :default => 0, :null => false
      timestamps
    end
+   attr_accessible :title, :body, :status, :project, :project_id, :tasks
  
-   belongs_to :project
-+  belongs_to :status, :class_name => "StoryStatus"
+   belongs_to :project, :inverse_of => :stories, :counter_cache => true
++  belongs_to :status, :class_name => "StoryStatus", :inverse_of => :story
  
-   has_many :tasks, :dependent => :destroy
+   has_many :tasks, :dependent => :destroy, :inverse_of => :story
  
+diff --git a/app/models/story_status.rb b/app/models/story_status.rb
+index 83ba26b..1c3bcf9 100644
+--- a/app/models/story_status.rb
++++ b/app/models/story_status.rb
+@@ -8,6 +8,8 @@ class StoryStatus < ActiveRecord::Base
+   end
+   attr_accessible :name
+ 
++  has_many :stories, :inverse_of => :status
++
+   # --- Permissions --- #
+ 
+   def create_permitted?

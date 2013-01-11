@@ -7,16 +7,16 @@ the database:
 
     $ hobo g migration
 ---
- .../20110419132125_add_project_membership.rb       |   16 ++++++++++++++++
+ .../20130109030838_add_project_membership.rb       |   16 ++++++++++++++++
  db/schema.rb                                       |   12 +++++++++++-
  2 files changed, 27 insertions(+), 1 deletions(-)
- create mode 100644 db/migrate/20110419132125_add_project_membership.rb
+ create mode 100644 db/migrate/20130109030838_add_project_membership.rb
 
-diff --git a/db/migrate/20110419132125_add_project_membership.rb b/db/migrate/20110419132125_add_project_membership.rb
+diff --git a/db/migrate/20130109030838_add_project_membership.rb b/db/migrate/20130109030838_add_project_membership.rb
 new file mode 100644
 index 0000000..fa66b3c
 --- /dev/null
-+++ b/db/migrate/20110419132125_add_project_membership.rb
++++ b/db/migrate/20130109030838_add_project_membership.rb
 @@ -0,0 +1,16 @@
 +class AddProjectMembership < ActiveRecord::Migration
 +  def self.up
@@ -35,15 +35,15 @@ index 0000000..fa66b3c
 +  end
 +end
 diff --git a/db/schema.rb b/db/schema.rb
-index e754c70..4fe0302 100644
+index d06a30a..e5d0419 100644
 --- a/db/schema.rb
 +++ b/db/schema.rb
 @@ -11,7 +11,17 @@
  #
  # It's strongly recommended to check this file into your version control system.
  
--ActiveRecord::Schema.define(:version => 20110419124953) do
-+ActiveRecord::Schema.define(:version => 20110419132125) do
+-ActiveRecord::Schema.define(:version => 20130109025834) do
++ActiveRecord::Schema.define(:version => 20130109030838) do
 +
 +  create_table "project_memberships", :force => true do |t|
 +    t.datetime "created_at"

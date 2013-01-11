@@ -10,15 +10,15 @@ SHOW_PATCH
  1 files changed, 3 insertions(+), 0 deletions(-)
 
 diff --git a/app/models/project_membership.rb b/app/models/project_membership.rb
-index 190efec..f5e6703 100644
+index 982242c..65f0b8b 100644
 --- a/app/models/project_membership.rb
 +++ b/app/models/project_membership.rb
-@@ -6,6 +6,9 @@ class ProjectMembership < ActiveRecord::Base
-     timestamps
+@@ -7,6 +7,9 @@ class ProjectMembership < ActiveRecord::Base
    end
+   attr_accessible 
  
-+  belongs_to :project
-+  belongs_to :user
++  belongs_to :project, :inverse_of => :memberships
++  belongs_to :user, :inverse_of => :project_memberships
 +
    # --- Permissions --- #
  

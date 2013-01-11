@@ -14,13 +14,13 @@ SHOW_PATCH
  1 files changed, 5 insertions(+), 0 deletions(-)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
-index 463da0c..2e397ff 100644
+index 0ea6a1d..e79d1d0 100644
 --- a/app/views/projects/show.dryml
 +++ b/app/views/projects/show.dryml
 @@ -1,6 +1,11 @@
  <show-page>
    <collection: replace>
-   <table-plus with="&@stories" fields="this, tasks.count, status">
+   <table-plus with="&@stories" fields="this, tasks_count, status">
 +    <prepend-header:>
 +      <div class="filter">
 +        Display by status: <filter-menu param-name="status" options="&StoryStatus.all"/>

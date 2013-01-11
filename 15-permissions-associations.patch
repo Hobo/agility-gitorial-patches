@@ -25,13 +25,13 @@ in [Project Ownership](#project_ownership).
  1 files changed, 1 insertions(+), 1 deletions(-)
 
 diff --git a/app/models/task.rb b/app/models/task.rb
-index 27aaae1..83055eb 100644
+index a7559f8..dced8e0 100644
 --- a/app/models/task.rb
 +++ b/app/models/task.rb
-@@ -10,7 +10,7 @@ class Task < ActiveRecord::Base
-   belongs_to :story
+@@ -11,7 +11,7 @@ class Task < ActiveRecord::Base
+   belongs_to :story, :inverse_of => :tasks, :counter_cache => true
  
-   has_many :task_assignments, :dependent => :destroy
+   has_many :task_assignments, :dependent => :destroy, :inverse_of => :task
 -  has_many :users, :through => :task_assignments
 +  has_many :users, :through => :task_assignments, :accessible => true, :dependent => :destroy
  

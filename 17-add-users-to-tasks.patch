@@ -8,7 +8,7 @@ At the moment, the only way to see who's assigned to a task is to click the task
 
 DRYML has a feature called *polymorphic tags*. These are tags that are defined differently for different types of object. Rapid makes use of this feature with a system of "cards". The tasks that are displayed on the story page are rendered by the `<card>`. You can define custom cards for particular models. Furthermore, if you call `<base-card>` you can define your card by tweaking the default, rather than starting from scratch. This is what DRYML is all about. It's like a smart-bomb, capable of taking out little bits of unwanted HTML with pin-point strikes and no collateral damage.
 
-The file `app/views/taglibs/application.dryml` is a place to put tag definitions that will be available throughout the site. Add this definition to that file:
+The file `app/views/taglibs/front_site.dryml` is a place to put tag definitions that will be available throughout the site. Add this definition to that file:
 
 SHOW_PATCH
 
@@ -23,17 +23,17 @@ The `<extend>` tag is used to extend any tag that's already defined. The body of
  * The `:users` in `<repeat:users>` switches the context. It selects the `users` association of the task.
  * DRYML has a multi-purpose `<else>` tag. When used with repeat, it provides a default for the case when the collection is empty.
 ---
- app/views/taglibs/application.dryml |   10 ++++++++++
+ app/views/taglibs/front_site.dryml |   10 ++++++++++
  1 files changed, 10 insertions(+), 0 deletions(-)
 
-diff --git a/app/views/taglibs/application.dryml b/app/views/taglibs/application.dryml
-index 2f08a8e..2838a3e 100644
---- a/app/views/taglibs/application.dryml
-+++ b/app/views/taglibs/application.dryml
-@@ -7,3 +7,13 @@
+diff --git a/app/views/taglibs/front_site.dryml b/app/views/taglibs/front_site.dryml
+index f16084d..7f6da4c 100644
+--- a/app/views/taglibs/front_site.dryml
++++ b/app/views/taglibs/front_site.dryml
+@@ -15,3 +15,13 @@
  <include src="taglibs/auto/rapid/forms"/>
  
- <set-theme name="clean"/>
+ <include src="application"/>
 +
 +<extend tag="card" for="Task">
 +  <old-card merge>
