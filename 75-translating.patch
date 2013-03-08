@@ -19,31 +19,30 @@ a handle on your translation.
 ---
  config/application.rb              |    2 +-
  config/environments/development.rb |    3 +++
- 2 files changed, 4 insertions(+), 1 deletions(-)
+ 2 files changed, 4 insertions(+), 1 deletion(-)
 
 diff --git a/config/application.rb b/config/application.rb
-index f2ba6a3..b2f4f6b 100644
+index c2516d1..ed035a0 100644
 --- a/config/application.rb
 +++ b/config/application.rb
-@@ -38,7 +38,7 @@ module Agility
+@@ -44,7 +44,7 @@ module Agility
  
      # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
      # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
 -    # config.i18n.default_locale = :de
 +    config.i18n.default_locale = :en
  
-     # JavaScript files you want as :defaults (application.js is always included).
-     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+     # Configure the default encoding used in templates for Ruby 1.9.
+     config.encoding = "utf-8"
 diff --git a/config/environments/development.rb b/config/environments/development.rb
-index 23a6728..bd76420 100644
+index a9d6741..3d77ba5 100644
 --- a/config/environments/development.rb
 +++ b/config/environments/development.rb
-@@ -22,5 +22,8 @@ Agility::Application.configure do
+@@ -36,4 +36,7 @@ Agility::Application.configure do
  
-   # Only use best-standards-support built into browsers
-   config.action_dispatch.best_standards_support = :builtin
-+
+   # Expands the lines which load the assets
+   config.assets.debug = true
++  
 +  # turn this off after you're done translating
 +  config.hobo.show_translation_keys = true
  end
- 

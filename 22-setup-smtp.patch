@@ -13,7 +13,7 @@ you have a mail server available:
 SHOW_PATCH
 ---
  config/initializers/smtp.rb |    9 +++++++++
- 1 files changed, 9 insertions(+), 0 deletions(-)
+ 1 file changed, 9 insertions(+)
  create mode 100644 config/initializers/smtp.rb
 
 diff --git a/config/initializers/smtp.rb b/config/initializers/smtp.rb

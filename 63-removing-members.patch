@@ -9,7 +9,7 @@ The sidebar we just implemented has an obvious draw-back -- there's no way to re
 SHOW_PATCH
 ---
  app/views/projects/show.dryml |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
 index 1e9f38a..60b06d9 100644

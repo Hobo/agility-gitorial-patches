@@ -115,5 +115,16 @@ update to a later version of the tutorial, you must `git clone` the
 repository again and manually move any changes you have made from your
 old clone to the new one.
 ---
- 0 files changed, 0 insertions(+), 0 deletions(-)
+ README |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/README b/README
+index a36289d..73e9cd7 100644
+--- a/README
++++ b/README
+@@ -1,4 +1,4 @@
+-# Agility
++# Agility  
+ 
+ This is the source code to accompany the [Agility gitorial for
+ Hobo](http://cookbook.hobocentral.net/tutorials/agility).

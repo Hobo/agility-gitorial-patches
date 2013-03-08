@@ -7,7 +7,7 @@ You can always edit the migration before running it. For example you could creat
 SHOW_PATCH
 ---
  .../20130109022053_add_story_status_model.rb       |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ 1 file changed, 3 insertions(+)
 
 diff --git a/db/migrate/20130109022053_add_story_status_model.rb b/db/migrate/20130109022053_add_story_status_model.rb
 index 4372ea9..5b05104 100644

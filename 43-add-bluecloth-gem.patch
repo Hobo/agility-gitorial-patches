@@ -14,7 +14,7 @@ to your Gemfile and then running
 ---
  Gemfile      |    1 +
  Gemfile.lock |    2 ++
- 2 files changed, 3 insertions(+), 0 deletions(-)
+ 2 files changed, 3 insertions(+)
 
 diff --git a/Gemfile b/Gemfile
 index 7f4301f..42df1de 100644

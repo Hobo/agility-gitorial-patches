@@ -12,7 +12,7 @@ to production!
 SHOW_PATCH
 ---
  app/controllers/users_controller.rb |    5 +++++
- 1 files changed, 5 insertions(+), 0 deletions(-)
+ 1 file changed, 5 insertions(+)
 
 diff --git a/app/controllers/users_controller.rb b/app/controllers/users_controller.rb
 index bc01119..4052c0d 100644

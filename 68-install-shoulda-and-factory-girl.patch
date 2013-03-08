@@ -43,7 +43,7 @@ test framework.   So let's revisit that decision.
  Gemfile               |    2 ++
  Gemfile.lock          |   12 ++++++++++++
  config/application.rb |    7 +++++++
- 3 files changed, 21 insertions(+), 0 deletions(-)
+ 3 files changed, 21 insertions(+)
 
 diff --git a/Gemfile b/Gemfile
 index 42df1de..42648b1 100644

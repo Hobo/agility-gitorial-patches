@@ -14,7 +14,7 @@ SHOW_PATCH
  3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index 12db4f2..c75b482 100644
+index d828958..2bed9de 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
 @@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
@@ -27,10 +27,10 @@ index 12db4f2..c75b482 100644
  
  end
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 17f2cb9..4fa50d7 100644
+index 4227ef6..e190ea7 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
-@@ -32,7 +32,7 @@ class Story < ActiveRecord::Base
+@@ -31,7 +31,7 @@ class Story < ActiveRecord::Base
    end
  
    def view_permitted?(field)

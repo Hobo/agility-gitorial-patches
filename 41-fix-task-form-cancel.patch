@@ -9,7 +9,7 @@ SHOW_PATCH
 This is a good demonstration of DRYML's nested parameter feature. The `<edit-page>` makes it's form available as a parameter, and the form provides a `<cancel:>` parameter. We can drill down from the edit-page to the form and then to the cancel link to pass in a custom attribute. You can do this to any depth.
 ---
  app/views/tasks/edit.dryml |    5 +++++
- 1 files changed, 5 insertions(+), 0 deletions(-)
+ 1 file changed, 5 insertions(+)
  create mode 100644 app/views/tasks/edit.dryml
 
 diff --git a/app/views/tasks/edit.dryml b/app/views/tasks/edit.dryml

@@ -11,7 +11,7 @@ You'll see that the migration generator considers this change to be ambiguous. W
 Once you've done that you'll see that the generated migration includes the creation of the new foreign key and the removal of the old status column.  Press `g` now to generate the migration without running it.
 ---
  .../20130109022053_add_story_status_model.rb       |   23 ++++++++++++++++++++
- 1 files changed, 23 insertions(+), 0 deletions(-)
+ 1 file changed, 23 insertions(+)
  create mode 100644 db/migrate/20130109022053_add_story_status_model.rb
 
 diff --git a/db/migrate/20130109022053_add_story_status_model.rb b/db/migrate/20130109022053_add_story_status_model.rb

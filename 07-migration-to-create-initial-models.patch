@@ -29,7 +29,7 @@ views, we can get surprisingly close to a decent UI.
 ---
  db/migrate/20130109013414_initial_models.rb |   45 +++++++++++++++++++++++++++
  db/schema.rb                                |   40 +++++++++++++++++++++++-
- 2 files changed, 84 insertions(+), 1 deletions(-)
+ 2 files changed, 84 insertions(+), 1 deletion(-)
  create mode 100644 db/migrate/20130109013414_initial_models.rb
 
 diff --git a/db/migrate/20130109013414_initial_models.rb b/db/migrate/20130109013414_initial_models.rb

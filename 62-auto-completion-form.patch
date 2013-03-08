@@ -15,7 +15,7 @@ Some things to note:
  - The `<name-one>` tag creates an input field for the user association with auto-completion.
 ---
  app/views/projects/show.dryml |   15 ++++++++++++++-
- 1 files changed, 14 insertions(+), 1 deletions(-)
+ 1 file changed, 14 insertions(+), 1 deletion(-)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
 index e79d1d0..1e9f38a 100644

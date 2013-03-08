@@ -5,7 +5,7 @@ From: Bryan Larsen <bryan@larsen.st>
 Then permissions -- only the project owner (and admins) can manipulate these project memberships:
 ---
  app/models/project_membership.rb |    6 +++---
- 1 files changed, 3 insertions(+), 3 deletions(-)
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/app/models/project_membership.rb b/app/models/project_membership.rb
 index 65f0b8b..143d1b7 100644

@@ -8,7 +8,7 @@ Run the migration generator to see the effect on the app:
 ---
  db/migrate/20130109025834_project_ownership.rb |   13 +++++++++++++
  db/schema.rb                                   |    5 ++++-
- 2 files changed, 17 insertions(+), 1 deletions(-)
+ 2 files changed, 17 insertions(+), 1 deletion(-)
  create mode 100644 db/migrate/20130109025834_project_ownership.rb
 
 diff --git a/db/migrate/20130109025834_project_ownership.rb b/db/migrate/20130109025834_project_ownership.rb

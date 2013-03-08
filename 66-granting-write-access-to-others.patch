@@ -34,12 +34,12 @@ And a helper method that might come in handy when implementing your permission m
  create mode 100644 db/migrate/20130109032331_project_contributors.rb
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index f2c1b09..e352c83 100644
+index d1b32df..7d86910 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
 @@ -19,6 +19,14 @@ class Project < ActiveRecord::Base
-   belongs_to :owner, :class_name => "User", :creator => true
-   belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :project
+ 
+   belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :projects
  
 +  has_many :contributor_memberships, :class_name => "ProjectMembership", :scope => :contributor
 +  has_many :contributors, :through => :contributor_memberships, :source => :user

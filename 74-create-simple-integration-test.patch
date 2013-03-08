@@ -23,14 +23,14 @@ When your test is written, run it with
 ---
  app/models/user.rb                      |    2 
  test/integration/create_account_test.rb |  152 +++++++++++++++++++++++++++++++
- 2 files changed, 153 insertions(+), 1 deletions(-)
+ 2 files changed, 153 insertions(+), 1 deletion(-)
  create mode 100644 test/integration/create_account_test.rb
 
 diff --git a/app/models/user.rb b/app/models/user.rb
-index 4d847bc..6a59beb 100644
+index 275b816..7d23740 100644
 --- a/app/models/user.rb
 +++ b/app/models/user.rb
-@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
+@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
    # This gives admin rights and an :active state to the first sign-up.
    # Just remove it if you don't want that
    before_create do |user|

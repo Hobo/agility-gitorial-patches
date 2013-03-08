@@ -13,7 +13,7 @@ In order to support management of the statuses available, we'll create a StorySt
  test/fixtures/story_statuses.yml                  |   11 ++++++++
  test/functional/story_statuses_controller_test.rb |    7 +++++
  test/unit/story_status_test.rb                    |    7 +++++
- 5 files changed, 61 insertions(+), 0 deletions(-)
+ 5 files changed, 61 insertions(+)
  create mode 100644 app/controllers/story_statuses_controller.rb
  create mode 100644 app/models/story_status.rb
  create mode 100644 test/fixtures/story_statuses.yml

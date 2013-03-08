@@ -12,7 +12,7 @@ SHOW_PATCH
 ---
  app/models/project.rb |    2 ++
  app/models/story.rb   |    2 ++
- 2 files changed, 4 insertions(+), 0 deletions(-)
+ 2 files changed, 4 insertions(+)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
 index cc3d5dc..09933f0 100644

@@ -20,18 +20,17 @@ Knowing that, let's create a test:
 
 SHOW_PATCH
 ---
- test/unit/user_test.rb |   22 ++++++++++++++++++----
- 1 files changed, 18 insertions(+), 4 deletions(-)
+ test/unit/user_test.rb |   21 ++++++++++++++++++---
+ 1 file changed, 18 insertions(+), 3 deletions(-)
 
 diff --git a/test/unit/user_test.rb b/test/unit/user_test.rb
-index b563c81..1942c7d 100644
+index dcf1697..1942c7d 100644
 --- a/test/unit/user_test.rb
 +++ b/test/unit/user_test.rb
-@@ -1,9 +1,23 @@
+@@ -1,8 +1,23 @@
  require 'test_helper'
  
  class UserTest < ActiveSupport::TestCase
--  # Replace this with your real tests.
 -  test "the truth" do
 -    @user = create :user
 -    assert_equal "Test User", @user.name

@@ -6,18 +6,19 @@ Now two changes to our models:
 
 SHOW_PATCH
 ---
- app/models/story.rb |    2 +-
+ app/models/story.rb |    3 +--
  app/models/task.rb  |    2 ++
- 2 files changed, 3 insertions(+), 1 deletions(-)
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 30cf951..49353ce 100644
+index 9e385b8..fd34221 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
-@@ -13,7 +13,7 @@ class Story < ActiveRecord::Base
-   belongs_to :project, :inverse_of => :stories, :counter_cache => true
-   belongs_to :status, :class_name => "StoryStatus", :inverse_of => :story
+@@ -12,8 +12,7 @@ class Story < ActiveRecord::Base
  
+   belongs_to :project, :inverse_of => :stories, :counter_cache => true
+   belongs_to :status, :class_name => "StoryStatus", :inverse_of => :stories
+-
 -  has_many :tasks, :dependent => :destroy, :inverse_of => :story
 +  has_many :tasks, :dependent => :destroy, :inverse_of => :story, :order => :position
  

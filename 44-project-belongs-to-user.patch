@@ -13,17 +13,17 @@ SHOW_PATCH
 There's a Hobo extension there: `:creator => true` tells Hobo that when creating one of these things, the `owner` association should be automatically set up to be the user doing the create.
 ---
  app/models/project.rb |    2 ++
- 1 files changed, 2 insertions(+), 0 deletions(-)
+ 1 file changed, 2 insertions(+)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index 09933f0..cac656a 100644
+index 09933f0..a88bf44 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
 @@ -13,6 +13,8 @@ class Project < ActiveRecord::Base
  
    children :stories
  
-+  belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :project
++  belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :projects
 +
    # --- Permissions --- #
  
