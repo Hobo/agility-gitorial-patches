@@ -11,7 +11,7 @@ That's it. The page to manage the story statuses should appear in the main navig
 Now that we've got more structured statuses, let's do something with them...
 ---
  db/schema.rb |   11 +++++++++--
- 1 files changed, 9 insertions(+), 2 deletions(-)
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
 diff --git a/db/schema.rb b/db/schema.rb
 index e9eaa8d..fb10fcd 100644

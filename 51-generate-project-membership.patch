@@ -15,7 +15,7 @@ We can model this with a ProjectMembership model that represents access for a sp
  test/fixtures/project_memberships.yml              |   11 ++++++++
  .../project_memberships_controller_test.rb         |    7 +++++
  test/unit/project_membership_test.rb               |    7 +++++
- 5 files changed, 60 insertions(+), 0 deletions(-)
+ 5 files changed, 60 insertions(+)
  create mode 100644 app/controllers/project_memberships_controller.rb
  create mode 100644 app/models/project_membership.rb
  create mode 100644 test/fixtures/project_memberships.yml

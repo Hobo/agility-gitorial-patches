@@ -7,7 +7,7 @@ We have a problem -- the membership card doesn't display the user's name. There 
 SHOW_PATCH
 ---
  app/views/projects/show.dryml |    4 +++-
- 1 files changed, 3 insertions(+), 1 deletions(-)
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
 index 60b06d9..13b6be5 100644

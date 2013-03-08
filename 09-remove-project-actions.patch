@@ -15,7 +15,7 @@ SHOW_PATCH
 Refresh the browser and you'll notice that Tasks has been removed from the main nav-bar. Hobo's page generators adapt to changes in the actions that you make available.
 ---
  app/controllers/tasks_controller.rb |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/app/controllers/tasks_controller.rb b/app/controllers/tasks_controller.rb
 index f5a4f00..503f69a 100644

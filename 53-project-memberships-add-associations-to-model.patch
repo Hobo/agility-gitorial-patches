@@ -7,7 +7,7 @@ Next, add the associations to the model:
 SHOW_PATCH
 ---
  app/models/project_membership.rb |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ 1 file changed, 3 insertions(+)
 
 diff --git a/app/models/project_membership.rb b/app/models/project_membership.rb
 index 982242c..65f0b8b 100644

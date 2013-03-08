@@ -34,7 +34,7 @@ SHOW_PATCH
 The `fields` attribute to `<table-plus>` lets you specify a list of fields that will become the columns in the table. We could have said `fields="title, status"` which would have given us the same content in the table, but by saying `this`, the first column contains links to the stories, rather than just the title as text.
 ---
  app/views/projects/show.dryml |    7 +++++++
- 1 files changed, 7 insertions(+), 0 deletions(-)
+ 1 file changed, 7 insertions(+)
  create mode 100644 app/views/projects/show.dryml
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml

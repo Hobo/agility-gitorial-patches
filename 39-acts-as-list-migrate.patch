@@ -11,7 +11,7 @@ And that's it!
 ---
  db/migrate/20130109024936_install_acts_as_list.rb |    9 +++++++++
  db/schema.rb                                      |    3 ++-
- 2 files changed, 11 insertions(+), 1 deletions(-)
+ 2 files changed, 11 insertions(+), 1 deletion(-)
  create mode 100644 db/migrate/20130109024936_install_acts_as_list.rb
 
 diff --git a/db/migrate/20130109024936_install_acts_as_list.rb b/db/migrate/20130109024936_install_acts_as_list.rb

@@ -9,7 +9,7 @@ the database:
 ---
  .../20130109030838_add_project_membership.rb       |   16 ++++++++++++++++
  db/schema.rb                                       |   12 +++++++++++-
- 2 files changed, 27 insertions(+), 1 deletions(-)
+ 2 files changed, 27 insertions(+), 1 deletion(-)
  create mode 100644 db/migrate/20130109030838_add_project_membership.rb
 
 diff --git a/db/migrate/20130109030838_add_project_membership.rb b/db/migrate/20130109030838_add_project_membership.rb

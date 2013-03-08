@@ -19,7 +19,7 @@ We're going to need some data to test, so let us set up a factory:
 SHOW_PATCH
 ---
  test/factories/user_factory.rb |   15 +++++++++++++++
- 1 files changed, 15 insertions(+), 0 deletions(-)
+ 1 file changed, 15 insertions(+)
  create mode 100644 test/factories/user_factory.rb
 
 diff --git a/test/factories/user_factory.rb b/test/factories/user_factory.rb

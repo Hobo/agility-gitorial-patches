@@ -20,10 +20,10 @@ It is very common for websites to present information in a hierarchy, and this `
 Refresh any project page and you should see the collection, which will be empty of course, in a side-bar.
 ---
  app/models/project.rb |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/app/models/project.rb b/app/models/project.rb
-index c75b482..f2c1b09 100644
+index 2bed9de..d1b32df 100644
 --- a/app/models/project.rb
 +++ b/app/models/project.rb
 @@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
@@ -33,5 +33,5 @@ index c75b482..f2c1b09 100644
 -  children :stories
 +  children :stories, :memberships
  
+   belongs_to :owner, :class_name => "User", :creator => true, :inverse_of => :projects
    has_many :memberships, :class_name => "ProjectMembership", :dependent => :destroy, :inverse_of => :project
-   has_many :members, :through => :memberships, :source => :user

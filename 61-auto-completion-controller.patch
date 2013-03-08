@@ -11,7 +11,7 @@ First we need the controller side of the auto-complete. Add this declaration to 
 SHOW_PATCH
 ---
  app/controllers/users_controller.rb |    2 ++
- 1 files changed, 2 insertions(+), 0 deletions(-)
+ 1 file changed, 2 insertions(+)
 
 diff --git a/app/controllers/users_controller.rb b/app/controllers/users_controller.rb
 index 4052c0d..265c770 100644

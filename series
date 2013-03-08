@@ -1,9 +1,8 @@
-# This series applies on GIT commit 51f652a7d32ecc34958ac074f57c79e0c9f814d2
+# This series applies on GIT commit 94f4347cc5d49c04740827decad2f8673e400ff7
 01-intro.patch
 02-gitorial-sidebar.patch
 03-run-hobo.patch
 04-interface-first-hobo-style.patch
-05-generate-initial-models.patch
 06-add-initial-associations.patch
 07-migration-to-create-initial-models.patch
 08-viewhints-children.patch
@@ -15,7 +14,6 @@
 14-permissions-for-data-integrity.patch
 15-permissions-associations.patch
 16-customizing-views-1.patch
-17-add-users-to-tasks.patch
 18-add-task-summary-to-user-page.patch
 19-searchable-sortable-table.patch
 20-stories-table-add-count.patch
@@ -24,7 +22,6 @@
 23-add-flash-message.patch
 24-display-activation-link.patch
 25-odds-and-ends.patch
-26-story-status-menu.patch
 27-story-status-ajaxified.patch
 28-generate-story-status-model.patch
 29-auto-actions-story-status-controller.patch

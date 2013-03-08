@@ -5,7 +5,7 @@ From: Bryan Larsen <bryan@larsen.st>
 We could also add a column showing the number of tasks in a story. Change to `fields="this, tasks.count, status"` and see that a column is added with a readable title "Tasks Count".
 ---
  app/views/projects/show.dryml |    4 ++--
- 1 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
 index b12fac6..f62b0b2 100644

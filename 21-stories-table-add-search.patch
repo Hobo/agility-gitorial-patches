@@ -16,7 +16,7 @@ There's a lot happening here, so we're just going to point you to appropriate ma
 ---
  app/controllers/projects_controller.rb |    8 ++++++++
  app/views/projects/show.dryml          |    2 +-
- 2 files changed, 9 insertions(+), 1 deletions(-)
+ 2 files changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/app/controllers/projects_controller.rb b/app/controllers/projects_controller.rb
 index 210b07d..3c3b39b 100644

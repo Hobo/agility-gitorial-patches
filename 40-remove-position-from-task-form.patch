@@ -9,7 +9,7 @@ In `application.dryml` add:
 SHOW_PATCH
 ---
  app/views/taglibs/front_site.dryml |    6 ++++++
- 1 files changed, 6 insertions(+), 0 deletions(-)
+ 1 file changed, 6 insertions(+)
 
 diff --git a/app/views/taglibs/front_site.dryml b/app/views/taglibs/front_site.dryml
 index 7f6da4c..45ab983 100644

@@ -524,11 +524,11 @@ index 0000000..038b15b
 +  will_paginate!
 diff --git a/README b/README
 deleted file mode 100644
-index a36289d..0000000
+index 73e9cd7..0000000
 --- a/README
 +++ /dev/null
 @@ -1,23 +0,0 @@
--# Agility
+-# Agility  
 -
 -This is the source code to accompany the [Agility gitorial for
 -Hobo](http://cookbook.hobocentral.net/tutorials/agility).

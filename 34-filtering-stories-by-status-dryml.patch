@@ -11,7 +11,7 @@ First we'll add the filter control to the header of the table-plus. Rapid provid
 SHOW_PATCH
 ---
  app/views/projects/show.dryml |    5 +++++
- 1 files changed, 5 insertions(+), 0 deletions(-)
+ 1 file changed, 5 insertions(+)
 
 diff --git a/app/views/projects/show.dryml b/app/views/projects/show.dryml
 index 0ea6a1d..e79d1d0 100644

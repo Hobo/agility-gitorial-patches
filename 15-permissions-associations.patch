@@ -22,7 +22,7 @@ a site administrator).  We'll add permissions for other users later on
 in [Project Ownership](#project_ownership).
 ---
  app/models/task.rb |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/app/models/task.rb b/app/models/task.rb
 index a7559f8..dced8e0 100644

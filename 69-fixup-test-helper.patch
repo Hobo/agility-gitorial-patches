@@ -8,7 +8,7 @@ The generators did not replace our old fixtures based
 SHOW_PATCH
 ---
  test/test_helper.rb |    6 +-----
- 1 files changed, 1 insertions(+), 5 deletions(-)
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/test/test_helper.rb b/test/test_helper.rb
 index 8bf1192..6f13d1f 100644

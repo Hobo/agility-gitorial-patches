@@ -14,7 +14,7 @@ This creates nested routes and their corresponding actions:
 Hobo's page generators will respond to the existence of these routes and add a "New Story" link to the project page, and an appropriate "New Story" page.
 ---
  app/controllers/stories_controller.rb |    2 ++
- 1 files changed, 2 insertions(+), 0 deletions(-)
+ 1 file changed, 2 insertions(+)
 
 diff --git a/app/controllers/stories_controller.rb b/app/controllers/stories_controller.rb
 index f0dd368..0e6095b 100644

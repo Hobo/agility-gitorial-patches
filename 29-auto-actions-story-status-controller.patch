@@ -7,7 +7,7 @@ Whenever you create a new model + controller with Hobo, get into the habit of th
 SHOW_PATCH
 ---
  app/controllers/story_statuses_controller.rb |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/app/controllers/story_statuses_controller.rb b/app/controllers/story_statuses_controller.rb
 index 53a3817..318bad5 100644

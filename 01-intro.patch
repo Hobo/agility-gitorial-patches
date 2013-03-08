@@ -78,7 +78,7 @@ On the other hand, if you see something that looks like code but has a
 commands that you can type into your command terminal.
 ---
  README |   23 +++++++++++++++++++++++
- 1 files changed, 23 insertions(+), 0 deletions(-)
+ 1 file changed, 23 insertions(+)
 
 diff --git a/README b/README
 index e69de29..a36289d 100644

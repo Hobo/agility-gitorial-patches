@@ -7,7 +7,7 @@ To make the filter look right, create a file `app/assets/stylesheets/front/agili
 SHOW_PATCH
 ---
  .../stylesheets/front/agility-custom-styles.css    |    3 +++
- 1 files changed, 3 insertions(+), 0 deletions(-)
+ 1 file changed, 3 insertions(+)
  create mode 100644 app/assets/stylesheets/front/agility-custom-styles.css
 
 diff --git a/app/assets/stylesheets/front/agility-custom-styles.css b/app/assets/stylesheets/front/agility-custom-styles.css

@@ -11,7 +11,7 @@ SHOW_PATCH
 Notice how we set the context on the entire section to be the current user (`with="&current_user"`). That makes the markup inside the section much more compact and easy to read.
 ---
  app/views/front/index.dryml |    9 +++++++--
- 1 files changed, 7 insertions(+), 2 deletions(-)
+ 1 file changed, 7 insertions(+), 2 deletions(-)
 
 diff --git a/app/views/front/index.dryml b/app/views/front/index.dryml
 index 2ef4f9a..8af97d4 100644

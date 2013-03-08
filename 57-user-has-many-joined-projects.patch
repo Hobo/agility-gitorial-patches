@@ -7,7 +7,7 @@ And in the User model (remember that User already has an association called `pro
 SHOW_PATCH
 ---
  app/models/user.rb |    2 ++
- 1 files changed, 2 insertions(+), 0 deletions(-)
+ 1 file changed, 2 insertions(+)
 
 diff --git a/app/models/user.rb b/app/models/user.rb
 index 6bf0d8b..275b816 100644

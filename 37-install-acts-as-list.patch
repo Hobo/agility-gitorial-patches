@@ -16,7 +16,7 @@ to Gemfile and run
 ---
  Gemfile      |    4 +++-
  Gemfile.lock |    2 ++
- 2 files changed, 5 insertions(+), 1 deletions(-)
+ 2 files changed, 5 insertions(+), 1 deletion(-)
 
 diff --git a/Gemfile b/Gemfile
 index ec53aa9..7f4301f 100644

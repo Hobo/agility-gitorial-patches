@@ -8,7 +8,7 @@ Translations appear in the `config/locales` directory.  We'll edit
 SHOW_PATCH
 ---
  config/locales/app.en.yml |    6 ++++++
- 1 files changed, 6 insertions(+), 0 deletions(-)
+ 1 file changed, 6 insertions(+)
 
 diff --git a/config/locales/app.en.yml b/config/locales/app.en.yml
 index 26256ec..869012f 100644
