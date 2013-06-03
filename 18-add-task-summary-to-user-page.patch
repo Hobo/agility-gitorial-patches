@@ -38,7 +38,7 @@ Again - lots of new stuff there. Let's quickly run over what's going on
 
 That's probably a lot to take in all at once -- the main idea here is to throw you in and give you an overview of what's possible. The [DRYML Guide][] will shed more light.
 
-[DRYML Guide]: http://hobocentral.net/docs/dryml
+[DRYML Guide]: http://hobocentral.net/manual/dryml-guide
 ---
  app/views/users/show.dryml |    9 +++++++++
  1 file changed, 9 insertions(+)

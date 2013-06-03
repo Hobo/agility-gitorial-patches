@@ -1,4 +1,4 @@
-# This series applies on GIT commit 94f4347cc5d49c04740827decad2f8673e400ff7
+# This series applies on GIT commit 1a405315179acc31297fd4af0e7f1e681a1abf00
 01-intro.patch
 02-gitorial-sidebar.patch
 03-run-hobo.patch
