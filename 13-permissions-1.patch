@@ -51,7 +51,7 @@ file into a web browser to activate accounts.
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 41fa8af..4140718 100644
+index 03a60f2..bd9f96e 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
 @@ -24,7 +24,7 @@ class Story < ActiveRecord::Base

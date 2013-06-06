@@ -27,7 +27,7 @@ index d828958..2bed9de 100644
  
  end
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 4227ef6..e190ea7 100644
+index adadd86..35bb884 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
 @@ -31,7 +31,7 @@ class Story < ActiveRecord::Base

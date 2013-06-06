@@ -11,7 +11,7 @@ SHOW_PATCH
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index b086ca4..9e385b8 100644
+index 1722f1f..e2d0489 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
 @@ -5,13 +5,13 @@ class Story < ActiveRecord::Base
@@ -22,7 +22,7 @@ index b086ca4..9e385b8 100644
      tasks_count :integer, :default => 0, :null => false
      timestamps
    end
-   attr_accessible :title, :body, :status, :project, :project_id, :tasks
+   attr_accessible :title, :body, :status, :status_id, :project, :project_id, :tasks
  
    belongs_to :project, :inverse_of => :stories, :counter_cache => true
 +  belongs_to :status, :class_name => "StoryStatus", :inverse_of => :stories

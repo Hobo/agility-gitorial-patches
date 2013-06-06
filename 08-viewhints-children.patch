@@ -28,7 +28,7 @@ index cc3d5dc..09933f0 100644
  
    def create_permitted?
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 53e1b86..41fa8af 100644
+index 88d4048..03a60f2 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
 @@ -15,6 +15,8 @@ class Story < ActiveRecord::Base

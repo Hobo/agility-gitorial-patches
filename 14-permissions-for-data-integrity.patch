@@ -19,7 +19,7 @@ Now make a similar change to prevent tasks being moved from one story to another
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 4140718..a7437d4 100644
+index bd9f96e..1d84850 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
 @@ -24,7 +24,7 @@ class Story < ActiveRecord::Base

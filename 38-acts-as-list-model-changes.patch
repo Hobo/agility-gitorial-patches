@@ -11,7 +11,7 @@ SHOW_PATCH
  2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/app/models/story.rb b/app/models/story.rb
-index 9e385b8..fd34221 100644
+index e2d0489..0f54a82 100644
 --- a/app/models/story.rb
 +++ b/app/models/story.rb
 @@ -12,8 +12,7 @@ class Story < ActiveRecord::Base
